@@ -1,0 +1,34 @@
+{
+    "private": true,
+    "name": "page-view-map",
+    "description": "NR1 UI Package page-view-map",
+    "version": "0.1.0",
+    "scripts": {
+        "start": "nr1 package:serve",
+        "test": "exit 0"
+    },
+    "nr1": {
+        "uuid": "8c8ea486-8343-4bc7-9fe5-5c5ab77250c9",
+        "sdkVersion": 2
+    },
+    "bugs": {
+        "email": "labs@newrelic.com"
+    },
+    "dependencies": {
+        "colormap": "^2.3.1",
+        "js-base64": "^2.5.1",
+        "leaflet": "^1.5.1",
+        "prop-types": "^15.6.2",
+        "react": "^16.6.3",
+        "react-dom": "^16.6.3",
+        "react-leaflet": "^2.4.0"
+    },
+    "browserslist": [
+        "last 2 versions",
+        "not ie < 11",
+        "not dead"
+    ],
+    "devDependencies": {
+        "file-loader": "^4.1.0"
+    }
+}

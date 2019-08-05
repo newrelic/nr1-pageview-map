@@ -1,0 +1,8 @@
+{
+    "schemaType": "NERDLET",
+    "id": "page-view-map",
+    "description": "Page View Map nerdlet",
+    "displayName": "Page View Map",
+    "entities": [{"domain": "BROWSER", "type": "APPLICATION"}],
+    "actionCategory": "monitor"
+}
