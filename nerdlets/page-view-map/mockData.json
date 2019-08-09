@@ -1,0 +1,863 @@
+{
+  "data": {
+    "metadata": {
+      "contents": {
+        "messages": [],
+        "contents": [
+          {
+            "function": "alias",
+            "alias": "x",
+            "contents": {
+              "function": "count",
+              "simple": true
+            },
+            "facet": null,
+            "thresholds": null
+          },
+          {
+            "function": "alias",
+            "alias": "y",
+            "contents": {
+              "function": "average",
+              "attribute": "duration",
+              "simple": true
+            },
+            "facet": null,
+            "thresholds": null
+          },
+          {
+            "function": "alias",
+            "alias": "lat",
+            "contents": {
+              "function": "binop",
+              "simple": true,
+              "binop": "/",
+              "left": {
+                "function": "sum",
+                "attribute": "asnLatitude",
+                "simple": true
+              },
+              "right": {
+                "function": "count",
+                "simple": true
+              }
+            },
+            "facet": null,
+            "thresholds": null
+          },
+          {
+            "function": "alias",
+            "alias": "lng",
+            "contents": {
+              "function": "binop",
+              "simple": true,
+              "binop": "/",
+              "left": {
+                "function": "sum",
+                "attribute": "asnLongitude",
+                "simple": true
+              },
+              "right": {
+                "function": "count",
+                "simple": true
+              }
+            },
+            "facet": null,
+            "thresholds": null
+          }
+        ]
+      },
+      "eventTypes": [
+        "PageView"
+      ],
+      "eventType": "PageView",
+      "openEnded": true,
+      "messages": [],
+      "beginTimeMillis": 1565183792202,
+      "endTimeMillis": 1565185592202,
+      "beginTime": "2019-08-07T13:16:32Z",
+      "endTime": "2019-08-07T13:46:32Z",
+      "guid": "2616264f-3ea1-48d1-f77a-f836b617135c",
+      "routerGuid": "3ae3eed2-9971-9162-3bda-3be27285f076",
+      "rawSince": "30 MINUTES AGO",
+      "rawUntil": "NOW",
+      "rawCompareWith": "",
+      "facet": [
+        "regionCode",
+        "countryCode"
+      ],
+      "offset": 0,
+      "limit": 2000
+    },
+    "facets": [
+      {
+        "name": [
+          null,
+          "EU"
+        ],
+        "results": [
+          {
+            "count": 247
+          },
+          {
+            "average": 1.3307530364372466
+          },
+          {
+            "result": 47
+          },
+          {
+            "result": 8
+          }
+        ],
+        "beginTimeSeconds": 0,
+        "endTimeSeconds": 0
+      },
+      {
+        "name": [
+          "OH",
+          "US"
+        ],
+        "results": [
+          {
+            "count": 245
+          },
+          {
+            "average": 1.092383673469388
+          },
+          {
+            "result": 39.965301513671875
+          },
+          {
+            "result": -83.02349853515625
+          }
+        ],
+        "beginTimeSeconds": 0,
+        "endTimeSeconds": 0
+      },
+      {
+        "name": [
+          "TX",
+          "US"
+        ],
+        "results": [
+          {
+            "count": 214
+          },
+          {
+            "average": 1.1108084112149534
+          },
+          {
+            "result": 32.77870178222656
+          },
+          {
+            "result": -96.82170104980469
+          }
+        ],
+        "beginTimeSeconds": 0,
+        "endTimeSeconds": 0
+      },
+      {
+        "name": [
+          "QC",
+          "CA"
+        ],
+        "results": [
+          {
+            "count": 193
+          },
+          {
+            "average": 1.3532331606217616
+          },
+          {
+            "result": 46.77087457686508
+          },
+          {
+            "result": -75.46330786986672
+          }
+        ],
+        "beginTimeSeconds": 0,
+        "endTimeSeconds": 0
+      },
+      {
+        "name": [
+          "VA",
+          "US"
+        ],
+        "results": [
+          {
+            "count": 182
+          },
+          {
+            "average": 1.185967032967033
+          },
+          {
+            "result": 39.048095703125
+          },
+          {
+            "result": -77.4728012084961
+          }
+        ],
+        "beginTimeSeconds": 0,
+        "endTimeSeconds": 0
+      },
+      {
+        "name": [
+          "CA",
+          "US"
+        ],
+        "results": [
+          {
+            "count": 172
+          },
+          {
+            "average": 1.165488372093023
+          },
+          {
+            "result": 37.453254167423694
+          },
+          {
+            "result": -121.94716733000999
+          }
+        ],
+        "beginTimeSeconds": 0,
+        "endTimeSeconds": 0
+      },
+      {
+        "name": [
+          "02",
+          "AU"
+        ],
+        "results": [
+          {
+            "count": 123
+          },
+          {
+            "average": 1.3916016260162598
+          },
+          {
+            "result": -33.859100341796875
+          },
+          {
+            "result": 151.2001953125
+          }
+        ],
+        "beginTimeSeconds": 0,
+        "endTimeSeconds": 0
+      },
+      {
+        "name": [
+          "07",
+          "IE"
+        ],
+        "results": [
+          {
+            "count": 115
+          },
+          {
+            "average": 1.3425999999999998
+          },
+          {
+            "result": 53.33380126953125
+          },
+          {
+            "result": -6.2487945556640625
+          }
+        ],
+        "beginTimeSeconds": 0,
+        "endTimeSeconds": 0
+      },
+      {
+        "name": [
+          "45",
+          "MA"
+        ],
+        "results": [
+          {
+            "count": 89
+          },
+          {
+            "average": 1.3611011235955053
+          },
+          {
+            "result": 33.592193603515625
+          },
+          {
+            "result": -7.6183929443359375
+          }
+        ],
+        "beginTimeSeconds": 0,
+        "endTimeSeconds": 0
+      },
+      {
+        "name": [
+          null,
+          "SG"
+        ],
+        "results": [
+          {
+            "count": 88
+          },
+          {
+            "average": 1.3927045454545448
+          },
+          {
+            "result": 1.2928924560546875
+          },
+          {
+            "result": 103.85470581054688
+          }
+        ],
+        "beginTimeSeconds": 0,
+        "endTimeSeconds": 0
+      },
+      {
+        "name": [
+          null,
+          "JO"
+        ],
+        "results": [
+          {
+            "count": 85
+          },
+          {
+            "average": 1.4669764705882353
+          },
+          {
+            "result": 31
+          },
+          {
+            "result": 36
+          }
+        ],
+        "beginTimeSeconds": 0,
+        "endTimeSeconds": 0
+      },
+      {
+        "name": [
+          null,
+          "AR"
+        ],
+        "results": [
+          {
+            "count": 75
+          },
+          {
+            "average": 1.3939866666666667
+          },
+          {
+            "result": -34.603302001953125
+          },
+          {
+            "result": -58.38169860839844
+          }
+        ],
+        "beginTimeSeconds": 0,
+        "endTimeSeconds": 0
+      },
+      {
+        "name": [
+          null,
+          "DE"
+        ],
+        "results": [
+          {
+            "count": 75
+          },
+          {
+            "average": 1.1654133333333332
+          },
+          {
+            "result": 51.29930114746094
+          },
+          {
+            "result": 9.490997314453125
+          }
+        ],
+        "beginTimeSeconds": 0,
+        "endTimeSeconds": 0
+      },
+      {
+        "name": [
+          "05",
+          "IL"
+        ],
+        "results": [
+          {
+            "count": 73
+          },
+          {
+            "average": 1.4578219178082192
+          },
+          {
+            "result": 32.165802001953125
+          },
+          {
+            "result": 34.836700439453125
+          }
+        ],
+        "beginTimeSeconds": 0,
+        "endTimeSeconds": 0
+      },
+      {
+        "name": [
+          "CO",
+          "US"
+        ],
+        "results": [
+          {
+            "count": 73
+          },
+          {
+            "average": 1.224561643835617
+          },
+          {
+            "result": 39.75010681152344
+          },
+          {
+            "result": -104.99569702148438
+          }
+        ],
+        "beginTimeSeconds": 0,
+        "endTimeSeconds": 0
+      },
+      {
+        "name": [
+          null,
+          "US"
+        ],
+        "results": [
+          {
+            "count": 71
+          },
+          {
+            "average": 1.4182957746478873
+          },
+          {
+            "result": 37.751007080078125
+          },
+          {
+            "result": -97.8219985961914
+          }
+        ],
+        "beginTimeSeconds": 0,
+        "endTimeSeconds": 0
+      },
+      {
+        "name": [
+          null,
+          "IE"
+        ],
+        "results": [
+          {
+            "count": 68
+          },
+          {
+            "average": 1.4518088235294118
+          },
+          {
+            "result": 53.347198486328125
+          },
+          {
+            "result": -6.243896484375
+          }
+        ],
+        "beginTimeSeconds": 0,
+        "endTimeSeconds": 0
+      },
+      {
+        "name": [
+          null,
+          "AE"
+        ],
+        "results": [
+          {
+            "count": 63
+          },
+          {
+            "average": 1.509031746031746
+          },
+          {
+            "result": 24
+          },
+          {
+            "result": 54
+          }
+        ],
+        "beginTimeSeconds": 0,
+        "endTimeSeconds": 0
+      },
+      {
+        "name": [
+          "ON",
+          "CA"
+        ],
+        "results": [
+          {
+            "count": 59
+          },
+          {
+            "average": 1.5772711864406777
+          },
+          {
+            "result": 46.5
+          },
+          {
+            "result": -80.9666976928711
+          }
+        ],
+        "beginTimeSeconds": 0,
+        "endTimeSeconds": 0
+      },
+      {
+        "name": [
+          null,
+          "HK"
+        ],
+        "results": [
+          {
+            "count": 58
+          },
+          {
+            "average": 1.3571724137931034
+          },
+          {
+            "result": 22.316696166992188
+          },
+          {
+            "result": 114.16668701171875
+          }
+        ],
+        "beginTimeSeconds": 0,
+        "endTimeSeconds": 0
+      },
+      {
+        "name": [
+          null,
+          "JP"
+        ],
+        "results": [
+          {
+            "count": 57
+          },
+          {
+            "average": 1.23119298245614
+          },
+          {
+            "result": 35.69000244140625
+          },
+          {
+            "result": 139.69000244140625
+          }
+        ],
+        "beginTimeSeconds": 0,
+        "endTimeSeconds": 0
+      },
+      {
+        "name": [
+          null,
+          "CU"
+        ],
+        "results": [
+          {
+            "count": 56
+          },
+          {
+            "average": 1.358482142857143
+          },
+          {
+            "result": 21.5
+          },
+          {
+            "result": -80
+          }
+        ],
+        "beginTimeSeconds": 0,
+        "endTimeSeconds": 0
+      },
+      {
+        "name": [
+          "09",
+          "MX"
+        ],
+        "results": [
+          {
+            "count": 55
+          },
+          {
+            "average": 1.3149818181818187
+          },
+          {
+            "result": 19.4342041015625
+          },
+          {
+            "result": -99.13860321044922
+          }
+        ],
+        "beginTimeSeconds": 0,
+        "endTimeSeconds": 0
+      },
+      {
+        "name": [
+          "42",
+          "IS"
+        ],
+        "results": [
+          {
+            "count": 54
+          },
+          {
+            "average": 1.3571111111111112
+          },
+          {
+            "result": 63.750701904296875
+          },
+          {
+            "result": -20.224502563476562
+          }
+        ],
+        "beginTimeSeconds": 0,
+        "endTimeSeconds": 0
+      },
+      {
+        "name": [
+          "12",
+          "KR"
+        ],
+        "results": [
+          {
+            "count": 53
+          },
+          {
+            "average": 1.4333584905660381
+          },
+          {
+            "result": 37.456207275390625
+          },
+          {
+            "result": 126.72879028320312
+          }
+        ],
+        "beginTimeSeconds": 0,
+        "endTimeSeconds": 0
+      },
+      {
+        "name": [
+          "32",
+          "JP"
+        ],
+        "results": [
+          {
+            "count": 53
+          },
+          {
+            "average": 1.3396415094339629
+          },
+          {
+            "result": 34.65339660644531
+          },
+          {
+            "result": 135.51181030273438
+          }
+        ],
+        "beginTimeSeconds": 0,
+        "endTimeSeconds": 0
+      },
+      {
+        "name": [
+          "BC",
+          "CA"
+        ],
+        "results": [
+          {
+            "count": 52
+          },
+          {
+            "average": 1.1557884615384617
+          },
+          {
+            "result": 48.47929382324219
+          },
+          {
+            "result": -123.527099609375
+          }
+        ],
+        "beginTimeSeconds": 0,
+        "endTimeSeconds": 0
+      },
+      {
+        "name": [
+          "03",
+          "GL"
+        ],
+        "results": [
+          {
+            "count": 49
+          },
+          {
+            "average": 1.5958775510204084
+          },
+          {
+            "result": 64.18330383300781
+          },
+          {
+            "result": -51.75
+          }
+        ],
+        "beginTimeSeconds": 0,
+        "endTimeSeconds": 0
+      },
+      {
+        "name": [
+          "01",
+          "JP"
+        ],
+        "results": [
+          {
+            "count": 45
+          },
+          {
+            "average": 1.1818000000000002
+          },
+          {
+            "result": 35.331695556640625
+          },
+          {
+            "result": 136.87039184570312
+          }
+        ],
+        "beginTimeSeconds": 0,
+        "endTimeSeconds": 0
+      },
+      {
+        "name": [
+          "07",
+          "AU"
+        ],
+        "results": [
+          {
+            "count": 45
+          },
+          {
+            "average": 1.418133333333333
+          },
+          {
+            "result": -37.807098388671875
+          },
+          {
+            "result": 144.95159912109375
+          }
+        ],
+        "beginTimeSeconds": 0,
+        "endTimeSeconds": 0
+      },
+      {
+        "name": [
+          "19",
+          "IN"
+        ],
+        "results": [
+          {
+            "count": 41
+          },
+          {
+            "average": 1.3515365853658536
+          },
+          {
+            "result": 12.983306884765625
+          },
+          {
+            "result": 77.58331298828125
+          }
+        ],
+        "beginTimeSeconds": 0,
+        "endTimeSeconds": 0
+      },
+      {
+        "name": [
+          null,
+          "CA"
+        ],
+        "results": [
+          {
+            "count": 22
+          },
+          {
+            "average": 1.2951363636363638
+          },
+          {
+            "result": 43.63189697265625
+          },
+          {
+            "result": -79.37159729003906
+          }
+        ],
+        "beginTimeSeconds": 0,
+        "endTimeSeconds": 0
+      },
+      {
+        "name": [
+          "05",
+          "KE"
+        ],
+        "results": [
+          {
+            "count": 14
+          },
+          {
+            "average": 1.4305714285714284
+          },
+          {
+            "result": -1.2841033935546875
+          },
+          {
+            "result": 36.81550598144531
+          }
+        ],
+        "beginTimeSeconds": 0,
+        "endTimeSeconds": 0
+      }
+    ],
+    "unknownGroup": {
+      "results": [
+        {
+          "count": 0
+        },
+        {
+          "average": 0
+        },
+        {
+          "result": null
+        },
+        {
+          "result": null
+        }
+      ],
+      "beginTimeSeconds": 0,
+      "endTimeSeconds": 0
+    },
+    "totalResult": {
+      "results": [
+        {
+          "count": 2964
+        },
+        {
+          "average": 1.301476720647773
+        },
+        {
+          "result": 32.27327982069831
+        },
+        {
+          "result": -18.126245640228312
+        }
+      ],
+      "beginTimeSeconds": 0,
+      "endTimeSeconds": 0
+    },
+    "performanceStats": {
+      "inspectedCount": 19480,
+      "responseTime": 42
+    }
+  },
+  "error": null,
+  "loading": false
+}

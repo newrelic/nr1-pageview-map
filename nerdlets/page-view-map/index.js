@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Map, CircleMarker, Pane, TileLayer, Rectangle, Tooltip } from 'react-leaflet'
+import {Map, CircleMarker, Pane, TileLayer, Rectangle, Tooltip} from 'react-leaflet'
 import gql from 'graphql-tag';
-import { Spinner, Stack, StackItem, PieChart, NerdGraphQuery, NrqlQuery, Modal } from 'nr1';
+import { Spinner, Stack, StackItem, Grid, GridItem, NerdGraphQuery, NrqlQuery, Modal, LineChart, navigation } from 'nr1';
 import DetailsModal from './DetailsModal';
+const mockData = require('./mockData.json');
 
 export default class PageViewMap extends React.Component {
     static propTypes = {
@@ -21,19 +22,25 @@ export default class PageViewMap extends React.Component {
             lng: 18.6354709,
             zoom: 13,
             accountId: '',
-            hideModal: false, //false for development
+            detailsOpen: false,
+            mapGridEndColumn: 12,
+            openedFacet: null,
         }
     }
 
     getPageViewData = () => {
-        NrqlQuery.query({accountId: this.state.accountId, query: 'SELECT * FROM PageView'})
+        NrqlQuery.query({accountId: this.state.accountId, query: 'SELECT count(*) as viewCount, average(duration) as averageDuration, sum(asnLatitude)/count(*) as latitude, sum(asnLongitude)/count(*) as longitude FROM PageView FACET asn SINCE 12 DAYS AGO limit 1000'})
             .then(response => {
                 console.log('nrql response data:', response.data);
             })
     };
 
-    viewPageViewDetails = () => {
-        this.setState({hideModal: false})
+    togglePageViewDetails = (facet) => {
+        this.setState({
+            detailsOpen: !this.state.detailsOpen,
+            mapGridEndColumn: this.state.detailsOpen ? 12 : 7,
+            openedFacet: facet,
+        })
     };
 
     componentDidMount() {
@@ -47,32 +54,40 @@ export default class PageViewMap extends React.Component {
         q.then(results => {
             const accountId = results.data.actor.accounts[0].id;
             this.setState({
-                accountId: parseInt(accountId),
+                accountId: accountId,
             });
             this.getPageViewData()
         }).catch((error) => { console.log(error); })
     }
 
     render() {
-        const position = [49.7497638, 18.6354709];
-        return <div alignmentType={Stack.ALIGNMENT_TYPE.FILL}>
-            <Map
-            className="containerMap"
-            style={{height: '90vh'}}
-            center={position}
-            zoom={13}
-            zoomControl={true}
-            ref={(ref) => { this.mapRef = ref }}>
-                <CircleMarker center={position} onClick={this.viewPageViewDetails}>
-                </CircleMarker>
-                <TileLayer
-                attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-            </Map>
-            <DetailsModal hidden={this.state.hideModal}
-                          onClose={() => {this.setState({hideModal: true})}}
-                          accountId={this.state.accountId}/>
-        </div>
+        return <Grid>
+            <GridItem columnStart={1} columnEnd={this.state.mapGridEndColumn}>
+                <Map
+                    className="containerMap"
+                    style={{height: '90vh'}}
+                    center={[0,0]}
+                    zoom={2}
+                    zoomControl={true}
+                    ref={(ref) => {
+                        this.mapRef = ref
+                    }}>
+                    <TileLayer
+                        attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    {mockData.data.facets.map((facet, i) => {
+                        const pt = facet.results;
+                        return <CircleMarker key={`circle-${i}`} center={[pt[2].result, pt[3].result]} onClick={() => this.togglePageViewDetails(facet)}>
+                        </CircleMarker>
+                    })}
+                </Map>
+            </GridItem>
+            {this.state.detailsOpen &&
+                <GridItem columnStart={8} columnEnd={12}>
+                    <DetailsModal height={this.props.height} data={this.state.openedFacet}/>
+                </GridItem>
+            }
+        </Grid>
     }
 }
