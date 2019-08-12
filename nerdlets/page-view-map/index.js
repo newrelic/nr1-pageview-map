@@ -32,6 +32,19 @@ export default class PageViewMap extends React.Component {
         });
     };
 
+    createNrqlQueryForMapData = () => {
+        const timeRange = this.props.launcherUrlState.timeRange;
+
+        if (timeRange.duration !== null) {
+            return `SELECT count(*) as x, average(duration) as y, sum(asnLatitude)/count(*) as lat, sum(asnLongitude)/count(*) as lng FROM PageView facet regionCode, countryCode SINCE ${timeRange.duration/1000/60} minutes AGO limit 1000`
+        } else {
+            let beginTimeISO = new Date(timeRange.begin_time).toISOString();
+            let endTimeISO = new Date(timeRange.end_time).toISOString();
+
+            return `SELECT count(*) as x, average(duration) as y, sum(asnLatitude)/count(*) as lat, sum(asnLongitude)/count(*) as lng FROM PageView facet regionCode, countryCode SINCE '${beginTimeISO}' UNTIL '${endTimeISO}'`;
+        }
+    };
+
     render() {
         const { timeRange } = this.props.launcherUrlState;
 
@@ -41,7 +54,7 @@ export default class PageViewMap extends React.Component {
                 <NrqlQuery
                     formatType={NrqlQuery.FORMAT_TYPE.RAW}
                     accountId={Number(this.state.accountId)}
-                    query={`SELECT count(*) as x, average(duration) as y, sum(asnLatitude)/count(*) as lat, sum(asnLongitude)/count(*) as lng FROM PageView facet regionCode, countryCode SINCE 10 DAYS AGO limit 2000`}>
+                    query={this.createNrqlQueryForMapData()}>
                     {results => {
                         if (results.loading) {
                             return <Spinner className="centered" />
@@ -79,7 +92,8 @@ export default class PageViewMap extends React.Component {
                     <DetailsModal height={this.props.height}
                                   accountId={this.state.accountId}
                                   timeRange={timeRange}
-                                  openedFacet={this.state.openedFacet}/>
+                                  openedFacet={this.state.openedFacet}
+                                  togglePageViewDetails={this.togglePageViewDetails}/>
                 </GridItem>
             }
         </Grid>

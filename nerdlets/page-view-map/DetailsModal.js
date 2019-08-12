@@ -39,6 +39,11 @@ export default class DetailsModal extends React.Component {
 
         return <Grid className="details-panel">
             <GridItem columnStart={1} columnEnd={12}>
+                <Stack distributionType={Stack.DISTRIBUTION_TYPE.TRAILING}>
+                    <StackItem style={{padding: '5px 0', cursor: 'pointer'}}>
+                        <span onClick={this.props.togglePageViewDetails}>✕</span>
+                    </StackItem>
+                </Stack>
             <Stack directionType={Stack.DIRECTION_TYPE.HORIZONTAL}
                    alignmentType={Stack.ALIGNMENT_TYPE.CENTER}
                    distributionType={Stack.DISTRIBUTION_TYPE.FILL_EVENLY}>
@@ -71,12 +76,12 @@ export default class DetailsModal extends React.Component {
                 />
             </GridItem>
             <GridItem columnStart={7} columnEnd={12}>
-                {/*<LineChart*/}
-                    {/*style={{height: this.props.height * 0.3, width: '100%'}}*/}
-                    {/*accountId={accountId}*/}
-                    {/*query={nrqlQuery}*/}
-                    {/*className="chart"*/}
-                {/*/>*/}
+                <LineChart
+                    style={{height: this.props.height * 0.3, width: '100%'}}
+                    accountId={accountId}
+                    query={this.createNrqlQuery('domProcessingDuration')}
+                    className="chart"
+                />
             </GridItem>
         </Grid>
     }
