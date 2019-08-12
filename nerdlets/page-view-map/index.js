@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Map, CircleMarker, Pane, TileLayer, Rectangle, Tooltip} from 'react-leaflet'
-import gql from 'graphql-tag';
+import {Map, CircleMarker, TileLayer} from 'react-leaflet'
 import { Spinner, Stack, StackItem, Grid, GridItem, NerdGraphQuery, NrqlQuery, Modal, LineChart, navigation } from 'nr1';
 import DetailsModal from './DetailsModal';
-const mockData = require('./mockData.json');
+import { decodeEntityId } from './utils';
 
 export default class PageViewMap extends React.Component {
     static propTypes = {
@@ -18,74 +17,69 @@ export default class PageViewMap extends React.Component {
         super(props);
 
         this.state = {
-            lat: 49.7497638,
-            lng: 18.6354709,
-            zoom: 13,
-            accountId: '',
+            accountId: decodeEntityId(this.props.nerdletUrlState.entityId)[0],
             detailsOpen: false,
             mapGridEndColumn: 12,
             openedFacet: null,
         }
     }
 
-    getPageViewData = () => {
-        NrqlQuery.query({accountId: this.state.accountId, query: 'SELECT count(*) as viewCount, average(duration) as averageDuration, sum(asnLatitude)/count(*) as latitude, sum(asnLongitude)/count(*) as longitude FROM PageView FACET asn SINCE 12 DAYS AGO limit 1000'})
-            .then(response => {
-                console.log('nrql response data:', response.data);
-            })
-    };
-
     togglePageViewDetails = (facet) => {
         this.setState({
             detailsOpen: !this.state.detailsOpen,
             mapGridEndColumn: this.state.detailsOpen ? 12 : 7,
             openedFacet: facet,
-        })
+        });
     };
 
-    componentDidMount() {
-        const q = NerdGraphQuery.query({ query: gql`{
-            actor {
-              accounts {
-                id
-              }
-            }
-          }` });
-        q.then(results => {
-            const accountId = results.data.actor.accounts[0].id;
-            this.setState({
-                accountId: accountId,
-            });
-            this.getPageViewData()
-        }).catch((error) => { console.log(error); })
-    }
-
     render() {
+        const { timeRange } = this.props.launcherUrlState;
+
         return <Grid>
             <GridItem columnStart={1} columnEnd={this.state.mapGridEndColumn}>
-                <Map
-                    className="containerMap"
-                    style={{height: '90vh'}}
-                    center={[0,0]}
-                    zoom={2}
-                    zoomControl={true}
-                    ref={(ref) => {
-                        this.mapRef = ref
-                    }}>
-                    <TileLayer
-                        attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    />
-                    {mockData.data.facets.map((facet, i) => {
-                        const pt = facet.results;
-                        return <CircleMarker key={`circle-${i}`} center={[pt[2].result, pt[3].result]} onClick={() => this.togglePageViewDetails(facet)}>
-                        </CircleMarker>
-                    })}
-                </Map>
+
+                <NrqlQuery
+                    formatType={NrqlQuery.FORMAT_TYPE.RAW}
+                    accountId={Number(this.state.accountId)}
+                    query={`SELECT count(*) as x, average(duration) as y, sum(asnLatitude)/count(*) as lat, sum(asnLongitude)/count(*) as lng FROM PageView facet regionCode, countryCode SINCE 10 DAYS AGO limit 2000`}>
+                    {results => {
+                        if (results.loading) {
+                            return <Spinner className="centered" />
+                        } else {
+                            return <Map
+                                className="containerMap"
+                                style={{height: '90vh'}}
+                                center={[0,0]}
+                                zoom={2}
+                                zoomControl={true}
+                                ref={(ref) => {
+                                    this.mapRef = ref
+                                }}>
+                                <TileLayer
+                                    attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+                                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                />
+                                {results.data.facets.map((facet, i) => {
+                                    const pt = facet.results;
+                                    return <CircleMarker
+                                        key={`circle-${i}`}
+                                        center={[pt[2].result, pt[3].result]}
+                                        color={'green'}
+                                        radius={Math.log(pt[0].count)*3}
+                                        onClick={() => {this.togglePageViewDetails(facet);}}>
+                                    </CircleMarker>
+                                })}
+                            </Map>
+                        }
+                    }}
+                </NrqlQuery>
             </GridItem>
             {this.state.detailsOpen &&
                 <GridItem columnStart={8} columnEnd={12}>
-                    <DetailsModal height={this.props.height} data={this.state.openedFacet}/>
+                    <DetailsModal height={this.props.height}
+                                  accountId={this.state.accountId}
+                                  timeRange={timeRange}
+                                  openedFacet={this.state.openedFacet}/>
                 </GridItem>
             }
         </Grid>
