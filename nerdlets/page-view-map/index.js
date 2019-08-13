@@ -45,46 +45,68 @@ export default class PageViewMap extends React.Component {
     };
 
     render() {
-        const nrqlQueryForMapData = `SELECT count(*) as x, average(duration) as y, sum(asnLatitude)/count(*) as lat, sum(asnLongitude)/count(*) as lng FROM PageView facet regionCode, countryCode ${this.createSinceForMapDataQuery()}`;
+        const nrqlQueryForMapData = `SELECT count(*) as x, average(duration) as y, sum(asnLatitude)/count(*) as lat, sum(asnLongitude)/count(*) as lng FROM PageView FACET regionCode, countryCode ${this.createSinceForMapDataQuery()}`;
 
         return <Grid>
             <GridItem columnStart={1} columnEnd={this.state.mapGridEndColumn}>
-
                 <NrqlQuery
                     formatType={NrqlQuery.FORMAT_TYPE.RAW}
                     accountId={Number(this.state.accountId)}
-                    query={nrqlQueryForMapData}>
+                    query={`SELECT max(asnLatitude) as latMax, max(asnLongitude) as lngMax, min(asnLatitude) as latMin, min(asnLongitude) as lngMin FROM PageView ${this.createSinceForMapDataQuery()}`}>
                     {results => {
                         if (results.loading) {
-                            return <Spinner className="centered" />
+                            return <Spinner className="centered"/>
                         } else {
-                            return <Map
-                                className="containerMap"
-                                style={{height: '90vh'}}
-                                center={[0,0]}
-                                zoom={2}
-                                zoomControl={true}
-                                ref={(ref) => {
-                                    this.mapRef = ref
-                                }}>
-                                <TileLayer
-                                    attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
-                                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                                />
-                                {results.data.facets.map((facet, i) => {
-                                    const pt = facet.results;
-                                    return <CircleMarker
-                                        key={`circle-${i}`}
-                                        center={[pt[2].result, pt[3].result]}
-                                        color={'green'}
-                                        radius={Math.log(pt[0].count)*3}
-                                        onClick={() => {this.togglePageViewDetails(facet, true);}}>
-                                    </CircleMarker>
-                                })}
-                            </Map>
+                            let mapBoundaries = results.data.results;
+
+                            return <NrqlQuery
+                                formatType={NrqlQuery.FORMAT_TYPE.RAW}
+                                accountId={Number(this.state.accountId)}
+                                query={nrqlQueryForMapData}>
+                                {results => {
+                                    if (results.loading) {
+                                        return <Spinner className="centered" />
+                                    } else {
+                                        let latMax = mapBoundaries[0].max+0.5;
+                                        let lngMax = mapBoundaries[1].max+0.5;
+                                        let latMin = mapBoundaries[2].min-0.5;
+                                        let lngMin = mapBoundaries[3].min-0.5;
+
+                                        return <Map
+                                            className="containerMap"
+                                            style={{height: '90vh'}}
+                                            maxBounds={[[230, 230], [-230, -230]]}
+                                            bounds={[
+                                                [latMax, lngMax],
+                                                [latMin, lngMin]
+                                            ]}
+                                            zoomControl={true}
+                                            ref={(ref) => {
+                                                this.mapRef = ref
+                                            }}>
+                                            <TileLayer
+                                                attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+                                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                            />
+                                            {results.data.facets.map((facet, i) => {
+                                                const pt = facet.results;
+
+                                                return <CircleMarker
+                                                    key={`circle-${i}`}
+                                                    center={[pt[2].result, pt[3].result]}
+                                                    color={'green'}
+                                                    radius={Math.log(pt[0].count)*3}
+                                                    onClick={() => {this.togglePageViewDetails(facet, true);}}>
+                                                </CircleMarker>
+                                            })}
+                                        </Map>
+                                    }
+                                }}
+                            </NrqlQuery>
                         }
                     }}
                 </NrqlQuery>
+
             </GridItem>
             {this.state.detailsOpen &&
                 <GridItem columnStart={8} columnEnd={12}>
