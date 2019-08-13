@@ -1,16 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Map, CircleMarker, TileLayer} from 'react-leaflet'
-import { Spinner, Stack, StackItem, Grid, GridItem, NerdGraphQuery, NrqlQuery, Modal, LineChart, navigation } from 'nr1';
+import { Spinner, Grid, GridItem, NrqlQuery } from 'nr1';
 import DetailsModal from './DetailsModal';
 import { decodeEntityId } from './utils';
 
 export default class PageViewMap extends React.Component {
     static propTypes = {
-        width: PropTypes.number,
-        height: PropTypes.number,
-        launcherUrlState: PropTypes.object,
-        nerdletUrlState: PropTypes.object
+        height: PropTypes.number.isRequired,
+        launcherUrlState: PropTypes.object.isRequired,
+        nerdletUrlState: PropTypes.object.isRequired,
     };
 
     constructor(props) {
@@ -24,29 +23,29 @@ export default class PageViewMap extends React.Component {
         }
     }
 
-    togglePageViewDetails = (facet) => {
+    togglePageViewDetails = (facet, detailsOpen) => {
         this.setState({
-            detailsOpen: !this.state.detailsOpen,
-            mapGridEndColumn: this.state.detailsOpen ? 12 : 7,
+            detailsOpen: detailsOpen,
+            mapGridEndColumn: detailsOpen ? 7 : 12,
             openedFacet: facet,
         });
     };
 
-    createNrqlQueryForMapData = () => {
+    createSinceForMapDataQuery = () => {
         const timeRange = this.props.launcherUrlState.timeRange;
 
         if (timeRange.duration !== null) {
-            return `SELECT count(*) as x, average(duration) as y, sum(asnLatitude)/count(*) as lat, sum(asnLongitude)/count(*) as lng FROM PageView facet regionCode, countryCode SINCE ${timeRange.duration/1000/60} minutes AGO limit 1000`
+            return `SINCE ${timeRange.duration/1000/60} minutes AGO limit 1000`
         } else {
             let beginTimeISO = new Date(timeRange.begin_time).toISOString();
             let endTimeISO = new Date(timeRange.end_time).toISOString();
 
-            return `SELECT count(*) as x, average(duration) as y, sum(asnLatitude)/count(*) as lat, sum(asnLongitude)/count(*) as lng FROM PageView facet regionCode, countryCode SINCE '${beginTimeISO}' UNTIL '${endTimeISO}'`;
+            return `SINCE '${beginTimeISO}' UNTIL '${endTimeISO}'`;
         }
     };
 
     render() {
-        const { timeRange } = this.props.launcherUrlState;
+        const nrqlQueryForMapData = `SELECT count(*) as x, average(duration) as y, sum(asnLatitude)/count(*) as lat, sum(asnLongitude)/count(*) as lng FROM PageView facet regionCode, countryCode ${this.createSinceForMapDataQuery()}`;
 
         return <Grid>
             <GridItem columnStart={1} columnEnd={this.state.mapGridEndColumn}>
@@ -54,7 +53,7 @@ export default class PageViewMap extends React.Component {
                 <NrqlQuery
                     formatType={NrqlQuery.FORMAT_TYPE.RAW}
                     accountId={Number(this.state.accountId)}
-                    query={this.createNrqlQueryForMapData()}>
+                    query={nrqlQueryForMapData}>
                     {results => {
                         if (results.loading) {
                             return <Spinner className="centered" />
@@ -79,7 +78,7 @@ export default class PageViewMap extends React.Component {
                                         center={[pt[2].result, pt[3].result]}
                                         color={'green'}
                                         radius={Math.log(pt[0].count)*3}
-                                        onClick={() => {this.togglePageViewDetails(facet);}}>
+                                        onClick={() => {this.togglePageViewDetails(facet, true);}}>
                                     </CircleMarker>
                                 })}
                             </Map>
@@ -91,9 +90,9 @@ export default class PageViewMap extends React.Component {
                 <GridItem columnStart={8} columnEnd={12}>
                     <DetailsModal height={this.props.height}
                                   accountId={this.state.accountId}
-                                  timeRange={timeRange}
+                                  timeRange={this.props.launcherUrlState.timeRange}
                                   openedFacet={this.state.openedFacet}
-                                  togglePageViewDetails={this.togglePageViewDetails}/>
+                                  togglePageViewDetails={() => this.togglePageViewDetails(this.state.openedFacet, false)}/>
                 </GridItem>
             }
         </Grid>

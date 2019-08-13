@@ -1,14 +1,15 @@
 import React from "react";
-import { Grid, GridItem, Stack, StackItem, LineChart, NrqlQuery, Spinner, ChartGroup } from 'nr1';
+import { Grid, GridItem, Stack, StackItem, LineChart } from 'nr1';
 import PropTypes from "prop-types";
 
 
 export default class DetailsModal extends React.Component {
     static propTypes = {
-        width: PropTypes.number,
         height: PropTypes.number.isRequired,
-        launcherUrlState: PropTypes.object.isRequired,
-        nerdletUrlState: PropTypes.object.isRequired
+        accountId: PropTypes.number.isRequired,
+        openedFacet: PropTypes.object.isRequired,
+        timeRange: PropTypes.object.isRequired,
+        togglePageViewDetails: PropTypes.func.isRequired,
     };
 
     constructor(props) {
@@ -19,16 +20,16 @@ export default class DetailsModal extends React.Component {
     //Depending on what user chooses, timepicker returns either begin time and end time or duration.
     //Because of this, we can't have one nrql request for all options and we need one for "last" min/hr/days and one
     //for time range in the past.
-    createNrqlQuery = (attribute) => {
+    createSinceForDetailsQuery = () => {
         const timeRange = this.props.timeRange;
 
         if (timeRange.duration !== null) {
-            return `SELECT average(${attribute}) FROM PageView WHERE regionCode = '${this.props.openedFacet.name[0]}' AND countryCode = '${this.props.openedFacet.name[1]}' SINCE ${timeRange.duration/1000/60} minutes AGO limit 1000 TIMESERIES`
+            return `SINCE ${timeRange.duration/1000/60} minutes AGO TIMESERIES`
         } else {
             let beginTimeISO = new Date(timeRange.begin_time).toISOString();
             let endTimeISO = new Date(timeRange.end_time).toISOString();
 
-            return `SELECT average(${attribute}) FROM PageView WHERE regionCode = '${this.props.openedFacet.name[0]}' AND countryCode = '${this.props.openedFacet.name[1]}' SINCE '${beginTimeISO}' UNTIL '${endTimeISO}'`;
+            return `SINCE '${beginTimeISO}' UNTIL '${endTimeISO}'`;
         }
     };
 
@@ -63,7 +64,7 @@ export default class DetailsModal extends React.Component {
                 <LineChart
                     style={{height: this.props.height * 0.3, width: '100%'}}
                     accountId={accountId}
-                    query={this.createNrqlQuery('duration')}
+                    query={`SELECT average(duration) FROM PageView WHERE regionCode = '${this.props.openedFacet.name[0]}' AND countryCode = '${this.props.openedFacet.name[1]}' ${this.createSinceForDetailsQuery()}`}
                     className="chart"
                 />
             </GridItem>
@@ -71,7 +72,7 @@ export default class DetailsModal extends React.Component {
                 <LineChart
                     style={{height: this.props.height * 0.3, width: '100%'}}
                     accountId={accountId}
-                    query={this.createNrqlQuery('domProcessingDuration')}
+                    query={`SELECT average(domProcessingDuration) FROM PageView WHERE regionCode = '${this.props.openedFacet.name[0]}' AND countryCode = '${this.props.openedFacet.name[1]}' ${this.createSinceForDetailsQuery()}`}
                     className="chart"
                 />
             </GridItem>
@@ -79,7 +80,7 @@ export default class DetailsModal extends React.Component {
                 <LineChart
                     style={{height: this.props.height * 0.3, width: '100%'}}
                     accountId={accountId}
-                    query={this.createNrqlQuery('domProcessingDuration')}
+                    query={`SELECT average(domProcessingDuration) FROM PageView WHERE regionCode = '${this.props.openedFacet.name[0]}' AND countryCode = '${this.props.openedFacet.name[1]}' ${this.createSinceForDetailsQuery()}`}
                     className="chart"
                 />
             </GridItem>
