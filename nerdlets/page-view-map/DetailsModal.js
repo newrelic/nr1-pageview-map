@@ -29,7 +29,7 @@ export default class DetailsModal extends React.Component {
             let beginTimeISO = new Date(timeRange.begin_time).toISOString();
             let endTimeISO = new Date(timeRange.end_time).toISOString();
 
-            return `SINCE '${beginTimeISO}' UNTIL '${endTimeISO}'`;
+            return `SINCE '${beginTimeISO}' UNTIL '${endTimeISO}' TIMESERIES AUTO`;
         }
     };
 
