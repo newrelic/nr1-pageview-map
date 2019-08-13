@@ -15,14 +15,13 @@
         "email": "labs@newrelic.com"
     },
     "dependencies": {
-        "axios": "^0.19.0",
-        "colormap": "^2.3.1",
         "js-base64": "^2.5.1",
         "leaflet": "^1.5.1",
         "prop-types": "^15.6.2",
         "react": "^16.6.3",
         "react-dom": "^16.6.3",
-        "react-leaflet": "^2.4.0"
+        "react-leaflet": "^2.4.0",
+        "uuid": "^3.3.2"
     },
     "browserslist": [
         "last 2 versions",
@@ -30,6 +29,7 @@
         "not dead"
     ],
     "devDependencies": {
-        "file-loader": "^4.1.0"
+        "file-loader": "^4.1.0",
+        "url-loader": "^2.1.0"
     }
 }

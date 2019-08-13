@@ -1,42 +1,122 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Map, Marker, Popup, TileLayer, CircleMarker } from 'react-leaflet'
-import response from './response.json';
+import {Map, CircleMarker, TileLayer} from 'react-leaflet'
+import { Spinner, Grid, GridItem, NrqlQuery } from 'nr1';
+import DetailsModal from './DetailsModal';
+import { decodeEntityId } from './utils';
 
 export default class PageViewMap extends React.Component {
     static propTypes = {
-        width: PropTypes.number,
-        height: PropTypes.number,
-        launcherUrlState: PropTypes.object,
-        nerdletUrlState: PropTypes.object
+        height: PropTypes.number.isRequired,
+        launcherUrlState: PropTypes.object.isRequired,
+        nerdletUrlState: PropTypes.object.isRequired,
     };
 
     constructor(props) {
         super(props);
-        this.response = require('./response.json');
+
+        this.state = {
+            accountId: decodeEntityId(this.props.nerdletUrlState.entityId)[0],
+            detailsOpen: false,
+            mapGridEndColumn: 12,
+            openedFacet: null,
+        }
     }
 
-    componentWillMount() {
-    }
+    togglePageViewDetails = (facet, detailsOpen) => {
+        this.setState({
+            detailsOpen: detailsOpen,
+            mapGridEndColumn: detailsOpen ? 7 : 12,
+            openedFacet: facet,
+        });
+    };
+
+    createSinceForMapDataQuery = () => {
+        const timeRange = this.props.launcherUrlState.timeRange;
+
+        if (timeRange.duration !== null) {
+            return `SINCE ${timeRange.duration/1000/60} minutes AGO limit 1000`
+        } else {
+            let beginTimeISO = new Date(timeRange.begin_time).toISOString();
+            let endTimeISO = new Date(timeRange.end_time).toISOString();
+
+            return `SINCE '${beginTimeISO}' UNTIL '${endTimeISO}'`;
+        }
+    };
 
     render() {
-        return <Map
-        style={{height: '100%'}}
-        center={[this.response.results[0].events[0].asnLatitude, this.response.results[0].events[0].asnLongitude]}
-        zoom={13}
-        zoomControl={true}
-        ref={(ref) => { this.mapRef = ref }}>
-            {response.results[0].events.map((event, i) => {
-               return (
-                    <CircleMarker key={i} center={[event.asnLatitude, event.asnLongitude]} color="green" radius={20}>
-                        <Popup>Popup in CircleMarker</Popup>
-                    </CircleMarker>
-               ) 
-            })}
-            <TileLayer
-            attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-        </Map>
+        const nrqlQueryForMapData = `SELECT count(*) as x, average(duration) as y, sum(asnLatitude)/count(*) as lat, sum(asnLongitude)/count(*) as lng FROM PageView FACET regionCode, countryCode ${this.createSinceForMapDataQuery()}`;
+
+        return <Grid>
+            <GridItem columnStart={1} columnEnd={this.state.mapGridEndColumn}>
+                <NrqlQuery
+                    formatType={NrqlQuery.FORMAT_TYPE.RAW}
+                    accountId={Number(this.state.accountId)}
+                    query={`SELECT max(asnLatitude) as latMax, max(asnLongitude) as lngMax, min(asnLatitude) as latMin, min(asnLongitude) as lngMin FROM PageView ${this.createSinceForMapDataQuery()}`}>
+                    {results => {
+                        if (results.loading) {
+                            return <Spinner className="centered"/>
+                        } else {
+                            let mapBoundaries = results.data.results;
+
+                            return <NrqlQuery
+                                formatType={NrqlQuery.FORMAT_TYPE.RAW}
+                                accountId={Number(this.state.accountId)}
+                                query={nrqlQueryForMapData}>
+                                {results => {
+                                    if (results.loading) {
+                                        return <Spinner className="centered" />
+                                    } else {
+                                        let latMax = mapBoundaries[0].max+0.5;
+                                        let lngMax = mapBoundaries[1].max+0.5;
+                                        let latMin = mapBoundaries[2].min-0.5;
+                                        let lngMin = mapBoundaries[3].min-0.5;
+
+                                        return <Map
+                                            className="containerMap"
+                                            style={{height: '90vh'}}
+                                            maxBounds={[[230, 230], [-230, -230]]}
+                                            bounds={[
+                                                [latMax, lngMax],
+                                                [latMin, lngMin]
+                                            ]}
+                                            zoomControl={true}
+                                            ref={(ref) => {
+                                                this.mapRef = ref
+                                            }}>
+                                            <TileLayer
+                                                attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+                                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                            />
+                                            {results.data.facets.map((facet, i) => {
+                                                const pt = facet.results;
+
+                                                return <CircleMarker
+                                                    key={`circle-${i}`}
+                                                    center={[pt[2].result, pt[3].result]}
+                                                    color={'green'}
+                                                    radius={Math.log(pt[0].count)*3}
+                                                    onClick={() => {this.togglePageViewDetails(facet, true);}}>
+                                                </CircleMarker>
+                                            })}
+                                        </Map>
+                                    }
+                                }}
+                            </NrqlQuery>
+                        }
+                    }}
+                </NrqlQuery>
+
+            </GridItem>
+            {this.state.detailsOpen &&
+                <GridItem columnStart={8} columnEnd={12}>
+                    <DetailsModal height={this.props.height}
+                                  accountId={this.state.accountId}
+                                  timeRange={this.props.launcherUrlState.timeRange}
+                                  openedFacet={this.state.openedFacet}
+                                  togglePageViewDetails={() => this.togglePageViewDetails(this.state.openedFacet, false)}/>
+                </GridItem>
+            }
+        </Grid>
     }
 }
