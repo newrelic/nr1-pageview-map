@@ -1,5 +1,4 @@
 import { Base64 } from 'js-base64';
-import { EntitiesByIdsQuery } from 'nr1';
 
 /**
  * Returns an array of [accountId, domain, type, domainId]
