@@ -48,21 +48,21 @@ export default class DetailsModal extends React.Component {
             <Stack directionType={Stack.DIRECTION_TYPE.HORIZONTAL}
                    alignmentType={Stack.ALIGNMENT_TYPE.CENTER}
                    distributionType={Stack.DISTRIBUTION_TYPE.FILL_EVENLY}>
-                <StackItem style={{height: this.props.height * 0.2}}>
-                    <div className="pageviews-count">
+                <StackItem style={{height: this.props.height * 0.1}}>
+                    <div className="value-on-top">
                         {pageViewCount} Pageviews
                     </div>
                 </StackItem>
-                <StackItem style={{height: this.props.height * 0.2}}>
-                    <div className="avg-duration">
-                        {averageDuration} Avg Duration
+                <StackItem style={{height: this.props.height * 0.1}}>
+                    <div className="value-on-top">
+                        {averageDuration}s. Average Duration
                     </div>
                 </StackItem>
             </Stack>
             </GridItem>
             <GridItem columnStart={1} columnEnd={12}>
                 <LineChart
-                    style={{height: this.props.height * 0.3, width: '100%'}}
+                    style={{height: this.props.height * 0.4, width: '100%'}}
                     accountId={accountId}
                     query={`SELECT average(duration) FROM PageView WHERE regionCode = '${this.props.openedFacet.name[0]}' AND countryCode = '${this.props.openedFacet.name[1]}' ${this.createSinceForDetailsQuery()}`}
                     className="chart"

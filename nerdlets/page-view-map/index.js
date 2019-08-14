@@ -26,10 +26,23 @@ export default class PageViewMap extends React.Component {
     togglePageViewDetails = (facet, detailsOpen) => {
         this.setState({
             detailsOpen: detailsOpen,
-            mapGridEndColumn: detailsOpen ? 7 : 12,
+            mapGridEndColumn: detailsOpen ? 6 : 12,
             openedFacet: facet,
         });
     };
+
+    // Below, HSL is used to get color for markers.
+    // HSL stand for hue, saturation and lightness. In this function we only operate on hue.
+    // Top hue value is set to 120 which means green, 0 is red.
+    // Hue is derived by counting percentage of 120 based on maximum value in averageLoadTimes.
+    getMarkerColor = (averageLoadTimes, singlePlaceAverageTime) => {
+        let maxAverageLoad = Math.max(...averageLoadTimes);
+
+        let hue = ((1-singlePlaceAverageTime/maxAverageLoad)*120).toString(10);
+
+        return ["hsl(",hue,",100%,50%)"].join("");
+    };
+
 
     createSinceForMapDataQuery = () => {
         const timeRange = this.props.launcherUrlState.timeRange;
@@ -63,14 +76,20 @@ export default class PageViewMap extends React.Component {
                                 formatType={NrqlQuery.FORMAT_TYPE.RAW}
                                 accountId={Number(this.state.accountId)}
                                 query={nrqlQueryForMapData}>
-                                {results => {
-                                    if (results.loading) {
+                                {mapDataResults => {
+                                    if (mapDataResults.loading) {
                                         return <Spinner className="centered" />
                                     } else {
                                         let latMax = mapBoundaries[0].max+0.5;
                                         let lngMax = mapBoundaries[1].max+0.5;
                                         let latMin = mapBoundaries[2].min-0.5;
                                         let lngMin = mapBoundaries[3].min-0.5;
+
+                                        let averageLoadTimes = [];
+
+                                        for (let singleMarker of mapDataResults.data.facets) {
+                                            averageLoadTimes.push(singleMarker.results[1].average);
+                                        }
 
                                         return <Map
                                             className="containerMap"
@@ -88,13 +107,13 @@ export default class PageViewMap extends React.Component {
                                                 attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
                                                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                                             />
-                                            {results.data.facets.map((facet, i) => {
+                                            {mapDataResults.data.facets.map((facet, i) => {
                                                 const pt = facet.results;
 
                                                 return <CircleMarker
                                                     key={`circle-${i}`}
                                                     center={[pt[2].result, pt[3].result]}
-                                                    color={'green'}
+                                                    color={this.getMarkerColor(averageLoadTimes, pt[1].average)}
                                                     radius={Math.log(pt[0].count)*3}
                                                     onClick={() => {this.togglePageViewDetails(facet, true);}}>
                                                 </CircleMarker>
@@ -109,7 +128,7 @@ export default class PageViewMap extends React.Component {
 
             </GridItem>
             {this.state.detailsOpen &&
-                <GridItem columnStart={8} columnEnd={12}>
+                <GridItem columnStart={7} columnEnd={12}>
                     <DetailsModal height={this.props.height}
                                   accountId={this.state.accountId}
                                   timeRange={this.props.launcherUrlState.timeRange}
