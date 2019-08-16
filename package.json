@@ -5,7 +5,9 @@
     "version": "0.1.0",
     "scripts": {
         "start": "nr1 package:serve",
-        "test": "exit 0"
+        "test": "exit 0",
+        "eslint-check": "eslint nerdlets/",
+        "eslint-fix": "eslint nerdlets/ --fix"
     },
     "nr1": {
         "uuid": "8c8ea486-8343-4bc7-9fe5-5c5ab77250c9",
@@ -29,7 +31,13 @@
         "not dead"
     ],
     "devDependencies": {
+        "babel-eslint": "^10.0.2",
+        "eslint": "^6.1.0",
+        "eslint-config-prettier": "^6.0.0",
+        "eslint-plugin-prettier": "^3.1.0",
+        "eslint-plugin-react": "^7.14.3",
         "file-loader": "^4.1.0",
+        "prettier": "^1.18.2",
         "url-loader": "^2.1.0"
     }
 }
