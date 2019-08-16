@@ -1,6 +1,6 @@
-import React from "react";
-import { Grid, GridItem, Stack, StackItem, LineChart } from "nr1";
-import PropTypes from "prop-types";
+import React from 'react';
+import { Grid, GridItem, Stack, StackItem, LineChart } from 'nr1';
+import PropTypes from 'prop-types';
 
 export default class DetailsModal extends React.Component {
   static propTypes = {
@@ -43,7 +43,7 @@ export default class DetailsModal extends React.Component {
       <Grid className="details-panel">
         <GridItem columnStart={1} columnEnd={12}>
           <Stack distributionType={Stack.DISTRIBUTION_TYPE.TRAILING}>
-            <StackItem style={{ padding: "5px 0", cursor: "pointer" }}>
+            <StackItem style={{ padding: '5px 0', cursor: 'pointer' }}>
               <span onClick={this.props.togglePageViewDetails}>✕</span>
             </StackItem>
           </Stack>
@@ -62,7 +62,7 @@ export default class DetailsModal extends React.Component {
         </GridItem>
         <GridItem columnStart={1} columnEnd={12}>
           <LineChart
-            style={{ height: this.props.height * 0.3, width: "100%" }}
+            style={{ height: this.props.height * 0.3, width: '100%' }}
             accountId={accountId}
             query={`SELECT average(duration) FROM PageView WHERE regionCode = '${
               this.props.openedFacet.name[0]
@@ -74,7 +74,7 @@ export default class DetailsModal extends React.Component {
         </GridItem>
         <GridItem columnStart={1} columnEnd={6}>
           <LineChart
-            style={{ height: this.props.height * 0.3, width: "100%" }}
+            style={{ height: this.props.height * 0.3, width: '100%' }}
             accountId={accountId}
             query={`SELECT average(domProcessingDuration) FROM PageView WHERE regionCode = '${
               this.props.openedFacet.name[0]
@@ -86,7 +86,7 @@ export default class DetailsModal extends React.Component {
         </GridItem>
         <GridItem columnStart={7} columnEnd={12}>
           <LineChart
-            style={{ height: this.props.height * 0.3, width: "100%" }}
+            style={{ height: this.props.height * 0.3, width: '100%' }}
             accountId={accountId}
             query={`SELECT average(domProcessingDuration) FROM PageView WHERE regionCode = '${
               this.props.openedFacet.name[0]

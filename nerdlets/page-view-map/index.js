@@ -1,9 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Map, CircleMarker, TileLayer } from "react-leaflet";
-import { Spinner, Grid, GridItem, NrqlQuery } from "nr1";
-import DetailsModal from "./DetailsModal";
-import { decodeEntityId } from "./utils";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Map, CircleMarker, TileLayer } from 'react-leaflet';
+import { Spinner, Grid, GridItem, NrqlQuery } from 'nr1';
+import DetailsModal from './DetailsModal';
+import { decodeEntityId } from './utils';
 
 export default class PageViewMap extends React.Component {
   static propTypes = {
@@ -79,7 +79,7 @@ export default class PageViewMap extends React.Component {
                         return (
                           <Map
                             className="containerMap"
-                            style={{ height: "90vh" }}
+                            style={{ height: '90vh' }}
                             maxBounds={[[230, 230], [-230, -230]]}
                             bounds={[[latMax, lngMax], [latMin, lngMin]]}
                             zoomControl={true}
@@ -98,7 +98,7 @@ export default class PageViewMap extends React.Component {
                                 <CircleMarker
                                   key={`circle-${i}`}
                                   center={[pt[2].result, pt[3].result]}
-                                  color={"green"}
+                                  color={'green'}
                                   radius={Math.log(pt[0].count) * 3}
                                   onClick={() => {
                                     this.togglePageViewDetails(facet, true);
