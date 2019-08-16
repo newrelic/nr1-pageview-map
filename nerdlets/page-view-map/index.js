@@ -1,3 +1,6 @@
+// Copyright 2019 New Relic Corporation. All rights reserved.
+// SPDX-License-Identifier: Apache-2.0
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Map, CircleMarker, TileLayer } from 'react-leaflet';
