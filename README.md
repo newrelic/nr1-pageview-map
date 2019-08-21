@@ -1,4 +1,7 @@
 # Page View Map
+Copyright 2019 New Relic Corporation. All rights reserved.
+SPDX-License-Identifier: Apache-2.0
+
 
 ## Set up New Relic CLI:
 
