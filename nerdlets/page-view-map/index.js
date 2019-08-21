@@ -34,9 +34,10 @@ export default class PageViewMap extends React.Component {
   // Below, HSL is used to get color for markers.
   // HSL stand for hue, saturation and lightness. In this function we only operate on hue.
   // Top hue value is set to 120 which means green, 0 is red.
-  // Hue is derived by counting percentage of 120 based on maximum value in averageLoadTimes.
-  getMarkerColor = (averageLoadTimes, singlePlaceAverageTime) => {
-    let maxAverageLoad = Math.max(...averageLoadTimes);
+  getMarkerColor = (singlePlaceAverageTime) => {
+
+      // Top threshold value in seconds for red color.
+    let maxAverageLoad = 5;
 
     let hue = ((1 - singlePlaceAverageTime / maxAverageLoad) * 120).toString(
       10
