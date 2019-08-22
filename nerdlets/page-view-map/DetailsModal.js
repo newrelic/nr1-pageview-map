@@ -1,10 +1,9 @@
 // Copyright 2019 New Relic Corporation. All rights reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import React from "react";
-import { Grid, GridItem, Stack, StackItem, LineChart } from 'nr1';
-import PropTypes from "prop-types";
-
+import React from 'react';
+import { Grid, GridItem, Stack, StackItem, LineChart, ChartGroup } from 'nr1';
+import PropTypes from 'prop-types';
 
 export default class DetailsModal extends React.Component {
     static propTypes = {
@@ -36,57 +35,75 @@ export default class DetailsModal extends React.Component {
         }
     };
 
-    render() {
-        const pageViewCount = this.props.openedFacet.results[0].count;
-        const averageDuration = this.props.openedFacet.results[1].average.toFixed(2);
-        const accountId = Number(this.props.accountId);
+  render() {
+    const pageViewCount = this.props.openedFacet.results[0].count;
+    const averageDuration = this.props.openedFacet.results[1].average.toFixed(
+      2
+    );
+    const accountId = Number(this.props.accountId);
 
-        return <Grid className="details-panel">
-            <GridItem columnStart={1} columnEnd={12}>
-                <Stack distributionType={Stack.DISTRIBUTION_TYPE.TRAILING}>
-                    <StackItem style={{padding: '5px 0', cursor: 'pointer'}}>
-                        <span onClick={this.props.togglePageViewDetails}>✕</span>
-                    </StackItem>
-                </Stack>
-            <Stack directionType={Stack.DIRECTION_TYPE.HORIZONTAL}
-                   alignmentType={Stack.ALIGNMENT_TYPE.CENTER}
-                   distributionType={Stack.DISTRIBUTION_TYPE.FILL_EVENLY}>
-                <StackItem style={{height: this.props.height * 0.1}}>
-                    <div className="value-on-top">
-                        {pageViewCount} Pageviews
-                    </div>
-                </StackItem>
-                <StackItem style={{height: this.props.height * 0.1}}>
-                    <div className="value-on-top">
-                        {averageDuration}s. Average Duration
-                    </div>
-                </StackItem>
+    return (
+      <ChartGroup>
+        <Grid className="details-panel">
+          <GridItem columnStart={1} columnEnd={12}>
+            <Stack distributionType={Stack.DISTRIBUTION_TYPE.TRAILING}>
+              <StackItem style={{ padding: '5px 0', cursor: 'pointer' }}>
+                <span onClick={this.props.togglePageViewDetails}>✕</span>
+              </StackItem>
             </Stack>
-            </GridItem>
-            <GridItem columnStart={1} columnEnd={12}>
-                <LineChart
-                    style={{height: this.props.height * 0.4, width: '100%'}}
-                    accountId={accountId}
-                    query={`SELECT average(duration) FROM PageView WHERE regionCode = '${this.props.openedFacet.name[0]}' AND countryCode = '${this.props.openedFacet.name[1]}' ${this.createSinceForDetailsQuery()}`}
-                    className="chart"
-                />
-            </GridItem>
-            <GridItem columnStart={1} columnEnd={6}>
-                <LineChart
-                    style={{height: this.props.height * 0.3, width: '100%'}}
-                    accountId={accountId}
-                    query={`SELECT average(domProcessingDuration) FROM PageView WHERE regionCode = '${this.props.openedFacet.name[0]}' AND countryCode = '${this.props.openedFacet.name[1]}' ${this.createSinceForDetailsQuery()}`}
-                    className="chart"
-                />
-            </GridItem>
-            <GridItem columnStart={7} columnEnd={12}>
-                <LineChart
-                    style={{height: this.props.height * 0.3, width: '100%'}}
-                    accountId={accountId}
-                    query={`SELECT average(domProcessingDuration) FROM PageView WHERE regionCode = '${this.props.openedFacet.name[0]}' AND countryCode = '${this.props.openedFacet.name[1]}' ${this.createSinceForDetailsQuery()}`}
-                    className="chart"
-                />
-            </GridItem>
+            <Stack
+              directionType={Stack.DIRECTION_TYPE.HORIZONTAL}
+              alignmentType={Stack.ALIGNMENT_TYPE.CENTER}
+              distributionType={Stack.DISTRIBUTION_TYPE.FILL_EVENLY}
+            >
+              <StackItem style={{ height: this.props.height * 0.1 }}>
+                <div className="value-on-top">{pageViewCount} Pageviews</div>
+              </StackItem>
+              <StackItem style={{ height: this.props.height * 0.1 }}>
+                <div className="value-on-top">
+                  {averageDuration}s. Average Duration
+                </div>
+              </StackItem>
+            </Stack>
+          </GridItem>
+          <GridItem columnStart={1} columnEnd={12}>
+            <LineChart
+              style={{ height: this.props.height * 0.4, width: '100%' }}
+              accountId={accountId}
+              query={`SELECT average(duration) FROM PageView WHERE regionCode = '${
+                this.props.openedFacet.name[0]
+              }' AND countryCode = '${
+                this.props.openedFacet.name[1]
+              }' ${this.createSinceForDetailsQuery()}`}
+              className="chart"
+            />
+          </GridItem>
+          <GridItem columnStart={1} columnEnd={6}>
+            <LineChart
+              style={{ height: this.props.height * 0.3, width: '100%' }}
+              accountId={accountId}
+              query={`SELECT average(domProcessingDuration) FROM PageView WHERE regionCode = '${
+                this.props.openedFacet.name[0]
+              }' AND countryCode = '${
+                this.props.openedFacet.name[1]
+              }' ${this.createSinceForDetailsQuery()}`}
+              className="chart"
+            />
+          </GridItem>
+          <GridItem columnStart={7} columnEnd={12}>
+            <LineChart
+              style={{ height: this.props.height * 0.3, width: '100%' }}
+              accountId={accountId}
+              query={`SELECT average(domProcessingDuration) FROM PageView WHERE regionCode = '${
+                this.props.openedFacet.name[0]
+              }' AND countryCode = '${
+                this.props.openedFacet.name[1]
+              }' ${this.createSinceForDetailsQuery()}`}
+              className="chart"
+            />
+          </GridItem>
         </Grid>
-    }
+      </ChartGroup>
+    );
+  }
 }
