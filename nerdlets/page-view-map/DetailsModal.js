@@ -94,7 +94,7 @@ export default class DetailsModal extends React.Component {
             <LineChart
               style={{ height: this.props.height * 0.3, width: '100%' }}
               accountId={accountId}
-              query={`SELECT average(domProcessingDuration) FROM PageView WHERE regionCode = '${
+              query={`SELECT average(networkDuration) FROM PageView WHERE regionCode = '${
                 this.props.openedFacet.name[0]
               }' AND countryCode = '${
                 this.props.openedFacet.name[1]
