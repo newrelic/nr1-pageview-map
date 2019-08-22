@@ -9,22 +9,22 @@ import DetailsModal from './DetailsModal';
 import { decodeEntityId } from './utils';
 
 export default class PageViewMap extends React.Component {
-    static propTypes = {
-        height: PropTypes.number.isRequired,
-        launcherUrlState: PropTypes.object.isRequired,
-        nerdletUrlState: PropTypes.object.isRequired,
+  static propTypes = {
+    height: PropTypes.number.isRequired,
+    launcherUrlState: PropTypes.object.isRequired,
+    nerdletUrlState: PropTypes.object.isRequired
+  };
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      accountId: decodeEntityId(this.props.nerdletUrlState.entityId)[0],
+      detailsOpen: false,
+      mapGridEndColumn: 12,
+      openedFacet: null
     };
-
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            accountId: decodeEntityId(this.props.nerdletUrlState.entityId)[0],
-            detailsOpen: false,
-            mapGridEndColumn: 12,
-            openedFacet: null,
-        }
-    }
+  }
 
   togglePageViewDetails = (facet, detailsOpen) => {
     this.setState({
@@ -37,9 +37,8 @@ export default class PageViewMap extends React.Component {
   // Below, HSL is used to get color for markers.
   // HSL stand for hue, saturation and lightness. In this function we only operate on hue.
   // Top hue value is set to 120 which means green, 0 is red.
-  getMarkerColor = (singlePlaceAverageTime) => {
-
-      // Top threshold value in seconds for red color.
+  getMarkerColor = singlePlaceAverageTime => {
+    // Top threshold value in seconds for red color.
     let maxAverageLoad = 5;
 
     let hue = ((1 - singlePlaceAverageTime / maxAverageLoad) * 120).toString(
@@ -49,18 +48,18 @@ export default class PageViewMap extends React.Component {
     return ['hsl(', hue, ',100%,50%)'].join('');
   };
 
-    createSinceForMapDataQuery = () => {
-        const timeRange = this.props.launcherUrlState.timeRange;
+  createSinceForMapDataQuery = () => {
+    const timeRange = this.props.launcherUrlState.timeRange;
 
-        if (timeRange.duration !== null) {
-            return `SINCE ${timeRange.duration/1000/60} minutes AGO limit 1000`
-        } else {
-            let beginTimeISO = new Date(timeRange.begin_time).toISOString();
-            let endTimeISO = new Date(timeRange.end_time).toISOString();
+    if (timeRange.duration !== null) {
+      return `SINCE ${timeRange.duration / 1000 / 60} minutes AGO limit 1000`;
+    } else {
+      let beginTimeISO = new Date(timeRange.begin_time).toISOString();
+      let endTimeISO = new Date(timeRange.end_time).toISOString();
 
-            return `SINCE '${beginTimeISO}' UNTIL '${endTimeISO}'`;
-        }
-    };
+      return `SINCE '${beginTimeISO}' UNTIL '${endTimeISO}'`;
+    }
+  };
 
   render() {
     const nrqlQueryForMapData = `SELECT count(*) as x, average(duration) as y, sum(asnLatitude)/count(*) as lat, sum(asnLongitude)/count(*) as lng FROM PageView FACET regionCode, countryCode ${this.createSinceForMapDataQuery()}`;
