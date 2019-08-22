@@ -123,10 +123,7 @@ export default class PageViewMap extends React.Component {
                                 <CircleMarker
                                   key={`circle-${i}`}
                                   center={[pt[2].result, pt[3].result]}
-                                  color={this.getMarkerColor(
-                                    averageLoadTimes,
-                                    pt[1].average
-                                  )}
+                                  color={this.getMarkerColor(pt[1].average)}
                                   radius={Math.log(pt[0].count) * 3}
                                   onClick={() => {
                                     this.togglePageViewDetails(facet, true);
@@ -148,7 +145,7 @@ export default class PageViewMap extends React.Component {
           <GridItem columnStart={7} columnEnd={12}>
             <DetailsModal
               height={this.props.height}
-              accountId={this.state.accountId}
+              accountId={Number(this.state.accountId)}
               timeRange={this.props.launcherUrlState.timeRange}
               openedFacet={this.state.openedFacet}
               togglePageViewDetails={() =>
