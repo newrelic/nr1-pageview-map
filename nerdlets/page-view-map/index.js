@@ -7,6 +7,7 @@ import { Map, CircleMarker, TileLayer } from 'react-leaflet';
 import { Spinner, Grid, GridItem, NrqlQuery } from 'nr1';
 import DetailsModal from './DetailsModal';
 import { decodeEntityId } from './utils';
+import { runInThisContext } from 'vm';
 
 export default class PageViewMap extends React.Component {
   static propTypes = {
@@ -22,30 +23,33 @@ export default class PageViewMap extends React.Component {
       accountId: decodeEntityId(this.props.nerdletUrlState.entityId)[0],
       detailsOpen: false,
       mapGridEndColumn: 12,
-      openedFacet: null
+      openedFacet: null,
+      mapCenter: null,
     };
   }
 
-  togglePageViewDetails = (facet, detailsOpen) => {
+  togglePageViewDetails = (facet, detailsOpen, center) => {
     this.setState({
       detailsOpen: detailsOpen,
       mapGridEndColumn: detailsOpen ? 6 : 12,
-      openedFacet: facet
+      openedFacet: facet,
+      mapCenter: [center[0], center[1]]
     });
   };
 
   // Below, HSL is used to get color for markers.
   // HSL stand for hue, saturation and lightness. In this function we only operate on hue.
   // Top hue value is set to 120 which means green, 0 is red.
-  getMarkerColor = singlePlaceAverageTime => {
+  getMarkerColor = (singlePlaceAverageTime, facet) => {
     // Top threshold value in seconds for red color.
     let maxAverageLoad = 5;
 
     let hue = ((1 - singlePlaceAverageTime / maxAverageLoad) * 120).toString(
       10
     );
-
-    return ['hsl(', hue, ',100%,50%)'].join('');
+    return this.state.detailsOpen && facet === this.state.openedFacet
+      ? 'black'
+      : ['hsl(', hue, ',100%,50%)'].join('');
   };
 
   createSinceForMapDataQuery = () => {
@@ -106,6 +110,7 @@ export default class PageViewMap extends React.Component {
                             className="containerMap"
                             style={{ height: '90vh' }}
                             maxBounds={[[230, 230], [-230, -230]]}
+                            center={this.state.mapCenter}
                             bounds={[[latMax, lngMax], [latMin, lngMin]]}
                             zoomControl={true}
                             ref={ref => {
@@ -118,15 +123,18 @@ export default class PageViewMap extends React.Component {
                             />
                             {mapDataResults.data.facets.map((facet, i) => {
                               const pt = facet.results;
-
+                              const center = [pt[2].result, pt[3].result]
                               return (
                                 <CircleMarker
                                   key={`circle-${i}`}
-                                  center={[pt[2].result, pt[3].result]}
-                                  color={this.getMarkerColor(pt[1].average)}
+                                  center={center}
+                                  color={this.getMarkerColor(
+                                    pt[1].average,
+                                    facet
+                                  )}
                                   radius={Math.log(pt[0].count) * 3}
                                   onClick={() => {
-                                    this.togglePageViewDetails(facet, true);
+                                    this.togglePageViewDetails(facet, true, center);
                                   }}
                                 ></CircleMarker>
                               );
@@ -148,6 +156,7 @@ export default class PageViewMap extends React.Component {
               accountId={Number(this.state.accountId)}
               timeRange={this.props.launcherUrlState.timeRange}
               openedFacet={this.state.openedFacet}
+              mapDataResults={this.state.mapDataResults}
               togglePageViewDetails={() =>
                 this.togglePageViewDetails(this.state.openedFacet, false)
               }
