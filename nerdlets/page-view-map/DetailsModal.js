@@ -61,7 +61,23 @@ export default class DetailsModal extends React.Component {
               </StackItem>
               <StackItem style={{ height: this.props.height * 0.1 }}>
                 <div className="value-on-top">
-                  {averageDuration}s. Average Duration
+                  {averageDuration}s Avg Duration
+                </div>
+              </StackItem>
+            </Stack>
+            <Stack
+              directionType={Stack.DIRECTION_TYPE.HORIZONTAL}
+              alignmentType={Stack.ALIGNMENT_TYPE.CENTER}
+              distributionType={Stack.DISTRIBUTION_TYPE.FILL_EVENLY}
+            >
+              <StackItem style={{ height: this.props.height * 0.1 }}>
+                <div className="value-on-top">
+                  Country: {this.props.openedFacet.name[1]}
+                </div>
+              </StackItem>
+              <StackItem style={{ height: this.props.height * 0.1 }}>
+                <div className="value-on-top">
+                  Region: {this.props.openedFacet.name[0]}
                 </div>
               </StackItem>
             </Stack>
