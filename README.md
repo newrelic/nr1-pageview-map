@@ -61,7 +61,7 @@ npm start
 ```
 ## Step 2: Accessing the Nerdlet
 
-1. Open a web browser to `https://one.newrelic.com?packages=local` c
+1. Open a web browser to `https://one.newrelic.com?packages=local`
 2. Click on the `Entity Explorer`
 3. Click on `Browswer Applications` category in the left-hand navigation
 4. Click on any browser application from the list
