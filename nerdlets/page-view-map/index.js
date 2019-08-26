@@ -33,8 +33,11 @@ export default class PageViewMap extends React.Component {
       detailsOpen: detailsOpen,
       mapGridEndColumn: detailsOpen ? 6 : 12,
       openedFacet: facet,
-      mapCenter: [center[0], center[1]]
     });
+
+    if (center) {
+      this.setState({mapCenter: [center[0], center[1]]})
+    }
   };
 
   // Below, HSL is used to get color for markers.
