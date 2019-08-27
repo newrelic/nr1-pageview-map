@@ -2,7 +2,7 @@
     "schemaType": "LAUNCHER",
     "id": "my-launcher",
     "description": "Describe me",
-    "displayName": "my-launcher",
+    "displayName": "Page View Map",
     "icon": "interface_placeholders_icon-placeholder",
-    "rootNerdletId": "page-view-map.my-nerdlet"
+    "rootNerdletId": "page-view-map.welcome-page"
 }
