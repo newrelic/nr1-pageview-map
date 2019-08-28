@@ -5,8 +5,8 @@ import { Base64 } from 'js-base64';
 
 /**
  * Returns an array of [accountId, domain, type, domainId]
- * @param {*} entityId
+ * @param {*} entityGuid
  */
-export const decodeEntityId = entityId => {
-  return Base64.decode(entityId).split('|');
+export const decodeEntityId = entityGuid => {
+  return Base64.decode(entityGuid).split('|');
 };
