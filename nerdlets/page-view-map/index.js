@@ -20,7 +20,7 @@ export default class PageViewMap extends React.Component {
     super(props);
 
     this.state = {
-      accountId: decodeEntityId(this.props.nerdletUrlState.entityId)[0],
+      accountId: decodeEntityId(this.props.nerdletUrlState.entityGuid)[0],
       detailsOpen: false,
       mapGridEndColumn: 12,
       openedFacet: null,
