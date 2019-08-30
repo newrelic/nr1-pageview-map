@@ -84,7 +84,7 @@ export default class DetailsModal extends React.Component {
           </GridItem>
           <GridItem columnStart={1} columnEnd={12}>
             <LineChart
-              style={{ height: this.props.height * 0.4, width: '100%' }}
+              style={{ height: this.props.height * 0.28, width: '100%' }}
               accountId={accountId}
               query={`SELECT average(duration) FROM PageView WHERE regionCode = '${
                 this.props.openedFacet.name[0]
@@ -96,7 +96,7 @@ export default class DetailsModal extends React.Component {
           </GridItem>
           <GridItem columnStart={1} columnEnd={6}>
             <LineChart
-              style={{ height: this.props.height * 0.3, width: '100%' }}
+              style={{ height: this.props.height * 0.28, width: '100%' }}
               accountId={accountId}
               query={`SELECT average(domProcessingDuration) FROM PageView WHERE regionCode = '${
                 this.props.openedFacet.name[0]
@@ -108,7 +108,7 @@ export default class DetailsModal extends React.Component {
           </GridItem>
           <GridItem columnStart={7} columnEnd={12}>
             <LineChart
-              style={{ height: this.props.height * 0.3, width: '100%' }}
+              style={{ height: this.props.height * 0.28, width: '100%' }}
               accountId={accountId}
               query={`SELECT average(networkDuration) FROM PageView WHERE regionCode = '${
                 this.props.openedFacet.name[0]
