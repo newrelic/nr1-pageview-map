@@ -80,6 +80,11 @@ export default class PageViewMap extends React.Component {
                         directionType={Stack.DIRECTION_TYPE.VERTICAL}
                         gapType={Stack.GAP_TYPE.NONE}>
                         <StackItem grow={true}>
+                            <SummaryBar accountId={Number(this.state.accountId)}
+                                        launcherUrlState={this.props.launcherUrlState}
+                                        nrqlSince={this.createSinceForMapDataQuery()}/>
+                        </StackItem>
+                        <StackItem grow={true}>
                             <Stack
                                 alignmentType={Stack.ALIGNMENT_TYPE.FILL}
                                 directionType={Stack.DIRECTION_TYPE.HORIZONTAL}
@@ -191,11 +196,6 @@ export default class PageViewMap extends React.Component {
                                     </StackItem>
                                 )}
                             </Stack>
-                        </StackItem>
-                        <StackItem grow={true}>
-                            <SummaryBar accountId={Number(this.state.accountId)}
-                                        launcherUrlState={this.props.launcherUrlState}
-                                        nrqlSince={this.createSinceForMapDataQuery()}/>
                         </StackItem>
                     </Stack>
                 </GridItem>
