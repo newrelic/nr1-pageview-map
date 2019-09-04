@@ -1,13 +1,11 @@
 @import '~leaflet/dist/leaflet.css';
 
-h1, h2 {
+h1 {
   width: fit-content;
   margin: 10px auto;
 }
-.details {
-  h1 {
-    margin: 10px;
-  }
+.map-wrapper {
+  background-color: #fff;
 }
 .centered {
   position: fixed;
@@ -30,6 +28,9 @@ h1, h2 {
   display: flex;
   justify-content: center;
   font-size: 25px;
+}
+.summary-bar {
+  background-color: #fff;
 }
 .microchart {
   height: 60px;

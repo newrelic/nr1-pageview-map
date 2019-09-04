@@ -20,6 +20,7 @@ export default class SummaryBar extends Component {
         alignmentType={Stack.ALIGNMENT_TYPE.FILL}
         directionType={Stack.DIRECTION_TYPE.HORIZONTAL}
         gapType={Stack.GAP_TYPE.TIGHT}
+        className="summary-bar"
       >
         <StackItem className="inline">
             <HeadingText>Overall</HeadingText>

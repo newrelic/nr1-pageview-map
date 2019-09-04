@@ -88,7 +88,8 @@ export default class PageViewMap extends React.Component {
                             <Stack
                                 alignmentType={Stack.ALIGNMENT_TYPE.FILL}
                                 directionType={Stack.DIRECTION_TYPE.HORIZONTAL}
-                                gapType={Stack.GAP_TYPE.TIGHT}>
+                                gapType={Stack.GAP_TYPE.TIGHT}
+                                className='map-wrapper'>
                                 <StackItem grow={true}>
 
                                     <GridItem columnStart={1} columnEnd={this.state.mapGridEndColumn}>
