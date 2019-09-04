@@ -11,7 +11,7 @@ export default class DetailsModal extends React.Component {
     accountId: PropTypes.number.isRequired,
     openedFacet: PropTypes.object.isRequired,
     timeRange: PropTypes.object.isRequired,
-    togglePageViewDetails: PropTypes.func.isRequired
+    togglePageViewDetails: PropTypes.func.isRequired,
   };
 
   constructor(props) {

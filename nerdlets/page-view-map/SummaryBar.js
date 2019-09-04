@@ -11,7 +11,7 @@ import {
 export default class SummaryBar extends Component {
   static propTypes = {
     accountId: PropTypes.any.isRequired,
-    nrqlSince:  PropTypes.string.isRequired,
+    nrqlSince: PropTypes.string.isRequired,
   };
 
   render() {
@@ -23,7 +23,7 @@ export default class SummaryBar extends Component {
         className="summary-bar"
       >
         <StackItem className="inline">
-            <HeadingText>Overall</HeadingText>
+          <HeadingText>Overall</HeadingText>
         </StackItem>
         <StackItem className="inline">
           <BillboardChart
