@@ -1,5 +1,5 @@
 {
-    "name": "page-view-map",
+    "name": "nr1-pageview-map",
     "description": "NR1 UI Package page-view-map",
     "version": "0.1.0",
     "license": "Apache-2.0",
@@ -10,14 +10,14 @@
         }
     ],
     "scripts": {
-        "start": "nr1 package:serve",
+        "start": "nr1 nerdpack:serve",
         "test": "exit 0",
         "eslint-check": "eslint nerdlets/",
         "eslint-fix": "eslint nerdlets/ --fix"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/newrelic/page-view-map.git"
+        "url": "https://github.com/newrelic/nr1-pageview-map.git"
     },
     "keywords": [
         "pageviews",
@@ -30,7 +30,7 @@
         "sdkVersion": 2
     },
     "bugs": {
-        "email": "labs@newrelic.com"
+        "email": "opensource@newrelic.com"
     },
     "dependencies": {
         "js-base64": "^2.5.1",
@@ -52,8 +52,8 @@
         "eslint-config-prettier": "^6.0.0",
         "eslint-plugin-prettier": "^3.1.0",
         "eslint-plugin-react": "^7.14.3",
-        "file-loader": "^4.1.0",
         "prettier": "^1.18.2",
+        "file-loader": "^4.1.0",
         "url-loader": "^2.1.0"
     }
 }

@@ -1,71 +1,69 @@
-# Page View Map
-Copyright 2019 New Relic Corporation. All rights reserved.
-SPDX-License-Identifier: Apache-2.0
+# nr1-pageview-map
 
+![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/newrelic/nr1-pageview-map?include_prereleases&sort=semver) ![AppVeyor](https://img.shields.io/appveyor/ci/newrelic/nr1-pageview-map) [![Snyk](https://snyk.io/test/github/newrelic/nr1-pageview-map/badge.svg)](https://snyk.io/test/github/newrelic/nr1-pageview-map)
 
-## Set up New Relic CLI:
+## Usage
 
-1. Navigate to `https://github.com/newrelic/eap-cli/tree/master/dist`, and click on the latest release of the NR1 CLI. (ex. `nr1-v0.3.0-alpha.11`)
-2. Download the apppropriate zipped bundle of the NR1 CLI and **unzip it to your home folder** (ex. for Mac it would be `nr1-v0.3.0-alpha.11-darwin-x64.tar.gz`).
-3. Open a Terminal window. From the command line you should the following:
+nr1-pageview-map provides a geographic exploration of Browser application data based on geography.
 
-```bash
-# To verify that you've unzipped the NR1 CLI, run this command and see similar output
-ls ~/nr1
-README.md node_modules package-lock.json bin oclif.manifest.json package.json
-```
+![Screenshot #1](screenshots/screenshot_01.png)
 
-4. From the command line, run the following:
+## Open Source License
 
-```bash
-#Create an alias to the cli
-ln -s ~/nr1/bin/nr1 /usr/local/bin/nr1
+This project is distributed under the [Apache 2 license](LICENSE).
 
-#Verify that you can execute nr1
-nr1 --version
+## What do you need to make this work?
 
-#You should see output to the terminal window
-```
-
-5. If you haven't done so yet, generate your personal SSL cert for your development environment.
-
-```bash
-cd ~
-sudo ./nr1/bin/nr1 certs:generate
-#The cert will be saved to a hidden folder
-```
-
-6. And if you haven't already cloned the workshop repo, do that now.
-
-```bash
-# if you haven't cloned the workshop repo already
-git clone git@github.com:newrelic/nr1-eap-workshop.git
-
-# then change directory into lab8
-cd workshop/lab8
-
-npm install
-npm start
-```
-
-7. In Google Chrome, navigate to the following URL `https://one.newrelic.com?packages=local`
-
+1. [New Relic Browser Agent(s) installed](https://newrelic.com/products/browser-monitoring) and the related access to [New Relic One](https://newrelic.com/platform).
+2. See step 1. :grin:
 
 ## Getting started
 
-Run the following scripts:
+Clone this repository and run the following scripts:
 
-```
+```bash
+git clone https://github.com/newrelic/nr1-pageview-map.git
+cd nr1-pageview-map
 npm install
 npm start
 ```
-## Step 2: Accessing the Nerdlet
 
-1. Open a web browser to `https://one.newrelic.com?packages=local`
-2. Click on the `Entity Explorer`
-3. Click on `Browswer Applications` category in the left-hand navigation
-4. Click on any browser application from the list
-5. You should now see a menu option in the left-hand navigation called `Page View Map`
-6. Click on `Page View Map`
-7. From the top right corner you can choose either a time range of the data you're interested in, or predefined duration.
-8. When you click on a Marker, you will see the details for this location.
+Visit https://one.newrelic.com/?nerdpacks=local, navigate to the Nerdpack, and :sparkles:
+
+# Deploying this Nerdpack
+
+Open a command prompt in the nerdpack's directory and run the following commands.
+
+```bash
+# this is to create a new uuid for the nerdpack so that you can deploy it to your account
+nr1 nerdpack:uuid -g [--profile=your_profile_name]
+# to see a list of APIkeys / profiles available in your development environment, run nr1 credentials:list
+nr1 nerdpack:publish [--profile=your_profile_name]
+nr1 nerdpack:deploy [-c [DEV|BETA|STABLE]] [--profile=your_profile_name]
+nr1 nerdpack:subscribe [-c [DEV|BETA|STABLE]] [--profile=your_profile_name]
+```
+
+Visit https://one.newrelic.com, navigate to the Nerdpack, and :sparkles:
+
+# Support
+
+New Relic has open-sourced this project. This project is provided AS-IS WITHOUT WARRANTY OR SUPPORT, although you can report issues and contribute to the project here on GitHub.
+
+_Please do not report issues with this software to New Relic Global Technical Support._
+
+## Community
+
+New Relic hosts and moderates an online forum where customers can interact with New Relic employees as well as other customers to get help and share best practices. Like all official New Relic open source projects, there's a related Community topic in the New Relic Explorer's Hub. You can find this project's topic/threads here:
+
+https://discuss.newrelic.com/c/build-on-new-relic/nr1-infra-geoops
+*(Note: URL subject to change before GA)*
+
+## Issues / Enhancement Requests
+
+Issues and enhancement requests can be submitted in the [Issues tab of this repository](../../issues). Please search for and review the existing open issues before submitting a new issue.
+
+# Contributing
+
+Contributions are welcome (and if you submit a Enhancement Request, expect to be invited to contribute it yourself :grin:). Please review our [Contributors Guide](CONTRIBUTING.md).
+
+Keep in mind that when you submit your pull request, you'll need to sign the CLA via the click-through using CLA-Assistant. If you'd like to execute our corporate CLA, or if you have any questions, please drop us an email at opensource@newrelic.com.
