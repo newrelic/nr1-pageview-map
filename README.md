@@ -24,6 +24,7 @@ Clone this repository and run the following scripts:
 ```bash
 git clone https://github.com/newrelic/nr1-pageview-map.git
 cd nr1-pageview-map
+nr1 nerdpack:uuid -gf
 npm install
 npm start
 ```
