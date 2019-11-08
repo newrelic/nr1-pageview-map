@@ -2,7 +2,17 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import React from 'react';
-import { Stack, StackItem, LineChart, BillboardChart, ChartGroup, HeadingText, Button, Icon, BlockText } from 'nr1';
+import {
+  Stack,
+  StackItem,
+  LineChart,
+  BillboardChart,
+  ChartGroup,
+  HeadingText,
+  Button,
+  Icon,
+  BlockText
+} from 'nr1';
 import PropTypes from 'prop-types';
 import { createSinceQueryFragment } from './util';
 
@@ -25,46 +35,73 @@ export default class DetailsPanel extends React.Component {
     const pageViewCount = openedFacet.x;
     return (
       <ChartGroup>
-        <div style={{height: '99vh', overflow: 'scroll'}}>
-        <Stack directionType={Stack.DIRECTION_TYPE.VERTICAL} horizontalType={Stack.HORIZONTAL_TYPE.TRAILING}>
-          <StackItem style={{ padding: '5px 0', cursor: 'pointer' }}>
+        <Stack
+          directionType={Stack.DIRECTION_TYPE.VERTICAL}
+          horizontalType={Stack.HORIZONTAL_TYPE.TRAILING}
+          className="details-panel"
+        >
+          <StackItem className="details-panel-headers">
+            <h3 className="details-panel-header">
+              {openedFacet.facet[0] ? `${openedFacet.facet[0]}, ` : ''}
+              {openedFacet.facet[1]}
+            </h3>
+            <span className="details-panel-subheader">
+              {pageViewCount} Pageviews
+            </span>
             <Button
               size="small"
               type={Button.TYPE.PLAIN}
-              onClick={() => {this.props.togglePageViewDetails(null)}}
+              onClick={() => {
+                this.props.togglePageViewDetails(null);
+              }}
               className="close-button"
-              iconType={Button.ICON_TYPE.INTERFACE__SIGN__TIMES__V_ALTERNATE}/>
+              iconType={Button.ICON_TYPE.INTERFACE__SIGN__TIMES__V_ALTERNATE}
+            />
           </StackItem>
-          <StackItem className="detailSection">
-            <HeadingText type={HeadingText.TYPE.HEADING_2}>{openedFacet.facet[0] ? `${openedFacet.facet[0]}, ` : ''}{openedFacet.facet[1]}</HeadingText>
-            <BlockText>{pageViewCount} Pageviews</BlockText>
-          </StackItem>
-          <StackItem>
-            <HeadingText type={HeadingText.TYPE.HEADING_4}>Overall Duration</HeadingText>
+          <StackItem className="chart-stack-item">
+            <h5 className="chart-header">Overall Duration</h5>
             <LineChart
-                className="chartSection"
-                accountId={accountId}
-                query={`SELECT average(duration) FROM PageView WHERE appId = ${appId} ${openedFacet.facet[0] ? ` WHERE regionCode = '${openedFacet.facet[0]}' ` : ''} ${openedFacet.facet[1] ? ` WHERE countryCode = '${openedFacet.facet[1]}' ` : ''} ${createSinceQueryFragment(launcherUrlState)} TIMESERIES`}
-              />
+              className="chartSection"
+              accountId={accountId}
+              query={`SELECT average(duration) FROM PageView WHERE appId = ${appId} ${
+                openedFacet.facet[0]
+                  ? ` WHERE regionCode = '${openedFacet.facet[0]}' `
+                  : ''
+              } ${
+                openedFacet.facet[1]
+                  ? ` WHERE countryCode = '${openedFacet.facet[1]}' `
+                  : ''
+              } ${createSinceQueryFragment(launcherUrlState)} TIMESERIES`}
+            />
           </StackItem>
-          <StackItem>
-            <HeadingText type={HeadingText.TYPE.HEADING_4}>DOM Processing</HeadingText>
+          <StackItem className="chart-stack-item">
+            <h5 className="chart-header">DOM Processing</h5>
             <LineChart
-                className="chartSection"
-                accountId={accountId}
-                query={`SELECT average(domProcessingDuration) FROM PageView WHERE appId = ${appId} ${openedFacet.facet[0] ? ` WHERE regionCode = '${openedFacet.facet[0]}' ` : ''} ${openedFacet.facet[1] ? ` WHERE countryCode = '${openedFacet.facet[1]}' ` : ''} ${createSinceQueryFragment(launcherUrlState)} TIMESERIES `}
-              />
+              className="chartSection"
+              accountId={accountId}
+              query={`SELECT average(domProcessingDuration) FROM PageView WHERE appId = ${appId} ${
+                openedFacet.facet[0]
+                  ? ` WHERE regionCode = '${openedFacet.facet[0]}' `
+                  : ''
+              } ${
+                openedFacet.facet[1]
+                  ? ` WHERE countryCode = '${openedFacet.facet[1]}' `
+                  : ''
+              } ${createSinceQueryFragment(launcherUrlState)} TIMESERIES `}
+            />
           </StackItem>
-          <StackItem>
-            <HeadingText type={HeadingText.TYPE.HEADING_4}>Overall JS Errors</HeadingText>
+          <StackItem className="chart-stack-item">
+            <h5 className="chart-header">Overall JS Errors</h5>
             <BillboardChart
-                className="chartSection"
-                accountId={accountId}
-                query={`SELECT count(*) FROM JavaScriptError WHERE appId = ${appId} ${createSinceQueryFragment(launcherUrlState, true)}`}
-              />
+              className="chartSection"
+              accountId={accountId}
+              query={`SELECT count(*) FROM JavaScriptError WHERE appId = ${appId} ${createSinceQueryFragment(
+                launcherUrlState,
+                true
+              )}`}
+            />
           </StackItem>
         </Stack>
-        </div>
       </ChartGroup>
     );
   }
