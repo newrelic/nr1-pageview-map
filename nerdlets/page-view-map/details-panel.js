@@ -2,17 +2,10 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import React from 'react';
-import {
-  Stack,
-  StackItem,
-  LineChart,
-  ChartGroup,
-  Button
-} from 'nr1';
+import { Stack, StackItem, LineChart, ChartGroup, Button } from 'nr1';
 import PropTypes from 'prop-types';
 import { createSinceQueryFragment } from './util';
 import numeral from 'numeral';
-
 
 export default class DetailsPanel extends React.Component {
   static propTypes = {
@@ -21,7 +14,7 @@ export default class DetailsPanel extends React.Component {
     accountId: PropTypes.number.isRequired,
     openedFacet: PropTypes.object.isRequired,
     launcherUrlState: PropTypes.object.isRequired,
-    togglePageViewDetails: PropTypes.func.isRequired
+    togglePageViewDetails: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -44,7 +37,7 @@ export default class DetailsPanel extends React.Component {
               {openedFacet.facet[1]}
             </h3>
             <span className="details-panel-subheader">
-              {numeral(pageViewCount).format("0,0")} Pageviews
+              {numeral(pageViewCount).format('0,0')} Pageviews
             </span>
             <Button
               size="small"
