@@ -26,7 +26,7 @@
     "pageviewmap"
   ],
   "nr1": {
-    "uuid": "1a81bc12-dc62-4b81-8432-66561a729ff5",
+    "uuid": "3d88f5a2-f512-4d4d-8821-6fa77e5e204e",
     "sdkVersion": 2
   },
   "bugs": {
@@ -37,8 +37,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
-    "react-leaflet": "^2.4.0",
-    "uuid": "^3.3.2"
+    "react-leaflet": "^2.4.0"
   },
   "browserslist": [
     "last 2 versions",

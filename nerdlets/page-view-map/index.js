@@ -10,10 +10,11 @@ import {
   PlatformStateContext,
   NerdletStateContext,
   NerdGraphQuery,
-  HeadingText
+  HeadingText,
+  BlockText
 } from 'nr1';
-import { mapData, entityQuery } from './util';
-import DetailsPanel from './DetailsPanel';
+import { mapData, entityQuery, getMarkerColor } from './util';
+import DetailsPanel from './details-panel';
 
 export default class PageViewMap extends React.Component {
   constructor(props) {
@@ -26,16 +27,6 @@ export default class PageViewMap extends React.Component {
     };
 
     this.togglePageViewDetails = this.togglePageViewDetails.bind(this);
-  }
-
-  getMarkerColor(measure, apdexTarget) {
-    if (measure <= apdexTarget) {
-      return '#11A600';
-    } else if (measure >= apdexTarget && measure <= apdexTarget * 4) {
-      return '#FFD966';
-    } else {
-      return '#BF0016';
-    }
   }
 
   togglePageViewDetails = (facet, detailsOpen, center) => {
@@ -80,15 +71,17 @@ export default class PageViewMap extends React.Component {
                   console.debug(data);
                   const {
                     accountId,
-                    servingApmApplicationId
+                    servingApmApplicationId,
+                    applicationId
                   } = data.actor.entity;
-                  const { apdexTarget } = data.actor.entity.settings;
+                  const { entity } = data.actor;
+                  const { apdexTarget } = data.actor.entity.settings || 0.5;
                   //return "Hello";
-                  return (
+                  return servingApmApplicationId || applicationId ? (
                     <NerdGraphQuery
                       query={mapData(
                         accountId,
-                        servingApmApplicationId,
+                        servingApmApplicationId || applicationId,
                         launcherUrlState
                       )}
                     >
@@ -149,7 +142,7 @@ export default class PageViewMap extends React.Component {
                                     <CircleMarker
                                       key={`circle-${i}`}
                                       center={center}
-                                      color={this.getMarkerColor(pt.y, 1.7)}
+                                      color={getMarkerColor(pt.y, 1.7)}
                                       radius={Math.log(pt.x) * 3}
                                       onClick={() => {
                                         this.togglePageViewDetails(pt, center);
@@ -176,6 +169,16 @@ export default class PageViewMap extends React.Component {
                         );
                       }}
                     </NerdGraphQuery>
+                  ) : (
+                    <div style={{ width: '50%', margin: 'auto' }}>
+                      <HeadingText>
+                        No location data is available for this app
+                      </HeadingText>
+                      <BlockText>
+                        {entity.name} does not have PageView events with an
+                        associated appId.
+                      </BlockText>
+                    </div>
                   );
                 }}
               </NerdGraphQuery>
