@@ -142,7 +142,7 @@ export default class PageViewMap extends React.Component {
                                     <CircleMarker
                                       key={`circle-${i}`}
                                       center={center}
-                                      color={getMarkerColor(pt.y, 1.7)}
+                                      color={getMarkerColor(pt.y, apdexTarget)}
                                       radius={Math.log(pt.x) * 3}
                                       onClick={() => {
                                         this.togglePageViewDetails(pt, center);
