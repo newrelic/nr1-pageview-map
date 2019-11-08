@@ -2,19 +2,10 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import React from 'react';
-import {
-  Stack,
-  StackItem,
-  LineChart,
-  BillboardChart,
-  ChartGroup,
-  HeadingText,
-  Button,
-  Icon,
-  BlockText
-} from 'nr1';
+import { Stack, StackItem, LineChart, ChartGroup, Button } from 'nr1';
 import PropTypes from 'prop-types';
 import { createSinceQueryFragment } from './util';
+import numeral from 'numeral';
 
 export default class DetailsPanel extends React.Component {
   static propTypes = {
@@ -23,7 +14,7 @@ export default class DetailsPanel extends React.Component {
     accountId: PropTypes.number.isRequired,
     openedFacet: PropTypes.object.isRequired,
     launcherUrlState: PropTypes.object.isRequired,
-    togglePageViewDetails: PropTypes.func.isRequired
+    togglePageViewDetails: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -46,7 +37,7 @@ export default class DetailsPanel extends React.Component {
               {openedFacet.facet[1]}
             </h3>
             <span className="details-panel-subheader">
-              {pageViewCount} Pageviews
+              {numeral(pageViewCount).format('0,0')} Pageviews
             </span>
             <Button
               size="small"
@@ -75,6 +66,22 @@ export default class DetailsPanel extends React.Component {
             />
           </StackItem>
           <StackItem className="chart-stack-item">
+            <h5 className="chart-header">Backend Duration</h5>
+            <LineChart
+              className="chartSection"
+              accountId={accountId}
+              query={`SELECT average(backendDuration) FROM PageView WHERE appId = ${appId} ${
+                openedFacet.facet[0]
+                  ? ` WHERE regionCode = '${openedFacet.facet[0]}' `
+                  : ''
+              } ${
+                openedFacet.facet[1]
+                  ? ` WHERE countryCode = '${openedFacet.facet[1]}' `
+                  : ''
+              } ${createSinceQueryFragment(launcherUrlState)} TIMESERIES `}
+            />
+          </StackItem>
+          <StackItem className="chart-stack-item">
             <h5 className="chart-header">DOM Processing</h5>
             <LineChart
               className="chartSection"
@@ -88,17 +95,6 @@ export default class DetailsPanel extends React.Component {
                   ? ` WHERE countryCode = '${openedFacet.facet[1]}' `
                   : ''
               } ${createSinceQueryFragment(launcherUrlState)} TIMESERIES `}
-            />
-          </StackItem>
-          <StackItem className="chart-stack-item">
-            <h5 className="chart-header">Overall JS Errors</h5>
-            <BillboardChart
-              className="chartSection"
-              accountId={accountId}
-              query={`SELECT count(*) FROM JavaScriptError WHERE appId = ${appId} ${createSinceQueryFragment(
-                launcherUrlState,
-                true
-              )}`}
             />
           </StackItem>
         </Stack>
