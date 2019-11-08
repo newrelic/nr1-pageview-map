@@ -3,21 +3,11 @@
   "description": "NR1 UI Package page-view-map",
   "version": "0.1.0",
   "license": "Apache-2.0",
-  "licenses": [
-    {
-      "type": "Apache-2.0",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0"
-    }
-  ],
   "scripts": {
     "start": "nr1 nerdpack:serve",
     "test": "exit 0",
     "eslint-check": "eslint nerdlets/",
     "eslint-fix": "eslint nerdlets/ --fix"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/newrelic/nr1-pageview-map.git"
   },
   "keywords": [
     "pageviews",
@@ -26,8 +16,7 @@
     "pageviewmap"
   ],
   "nr1": {
-    "uuid": "3d88f5a2-f512-4d4d-8821-6fa77e5e204e",
-    "sdkVersion": 2
+    "uuid": "3d88f5a2-f512-4d4d-8821-6fa77e5e204e"
   },
   "bugs": {
     "email": "opensource@newrelic.com"
