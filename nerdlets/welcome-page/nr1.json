@@ -1,7 +1,0 @@
-{
-  "schemaType": "NERDLET",
-  "id": "welcome-page",
-  "description": "Page View Map Welcome Page",
-  "displayName": "Page View Map",
-  "entities": [{"domain": "BROWSER", "type": "APPLICATION"}]
-}

@@ -1,59 +1,58 @@
 {
-    "name": "nr1-pageview-map",
-    "description": "NR1 UI Package page-view-map",
-    "version": "0.1.0",
-    "license": "Apache-2.0",
-    "licenses": [
-        {
-            "type": "Apache-2.0",
-            "url": "http://www.apache.org/licenses/LICENSE-2.0"
-        }
-    ],
-    "scripts": {
-        "start": "nr1 nerdpack:serve",
-        "test": "exit 0",
-        "eslint-check": "eslint nerdlets/",
-        "eslint-fix": "eslint nerdlets/ --fix"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/newrelic/nr1-pageview-map.git"
-    },
-    "keywords": [
-        "pageviews",
-        "new-relic",
-        "newrelic",
-        "pageviewmap"
-    ],
-    "nr1": {
-        "uuid": "8c8ea486-8343-4bc7-9fe5-5c5ab77250c9",
-        "sdkVersion": 2
-    },
-    "bugs": {
-        "email": "opensource@newrelic.com"
-    },
-    "dependencies": {
-        "js-base64": "^2.5.1",
-        "leaflet": "^1.5.1",
-        "prop-types": "^15.6.2",
-        "react": "^16.6.3",
-        "react-dom": "^16.6.3",
-        "react-leaflet": "^2.4.0",
-        "uuid": "^3.3.2"
-    },
-    "browserslist": [
-        "last 2 versions",
-        "not ie < 11",
-        "not dead"
-    ],
-    "devDependencies": {
-        "babel-eslint": "^10.0.2",
-        "eslint": "^6.1.0",
-        "eslint-config-prettier": "^6.0.0",
-        "eslint-plugin-prettier": "^3.1.0",
-        "eslint-plugin-react": "^7.14.3",
-        "prettier": "^1.18.2",
-        "file-loader": "^4.1.0",
-        "url-loader": "^2.1.0"
+  "name": "nr1-pageview-map",
+  "description": "NR1 UI Package page-view-map",
+  "version": "0.1.0",
+  "license": "Apache-2.0",
+  "licenses": [
+    {
+      "type": "Apache-2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
     }
+  ],
+  "scripts": {
+    "start": "nr1 nerdpack:serve",
+    "test": "exit 0",
+    "eslint-check": "eslint nerdlets/",
+    "eslint-fix": "eslint nerdlets/ --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/newrelic/nr1-pageview-map.git"
+  },
+  "keywords": [
+    "pageviews",
+    "new-relic",
+    "newrelic",
+    "pageviewmap"
+  ],
+  "nr1": {
+    "uuid": "1a81bc12-dc62-4b81-8432-66561a729ff5",
+    "sdkVersion": 2
+  },
+  "bugs": {
+    "email": "opensource@newrelic.com"
+  },
+  "dependencies": {
+    "leaflet": "^1.5.1",
+    "prop-types": "^15.6.2",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-leaflet": "^2.4.0",
+    "uuid": "^3.3.2"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "not ie < 11",
+    "not dead"
+  ],
+  "devDependencies": {
+    "babel-eslint": "^10.0.2",
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.3",
+    "prettier": "^1.18.2",
+    "file-loader": "^4.1.0",
+    "url-loader": "^2.1.0"
+  }
 }

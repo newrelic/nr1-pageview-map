@@ -1,7 +1,7 @@
 {
     "schemaType": "NERDLET",
     "id": "page-view-map",
-    "description": "Page View Map nerdlet",
+    "description": "Page View Map",
     "displayName": "Page View Map",
     "entities": [{"domain": "BROWSER", "type": "APPLICATION"}],
     "actionCategory": "monitor"

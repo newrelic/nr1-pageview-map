@@ -1,8 +1,0 @@
-{
-    "schemaType": "LAUNCHER",
-    "id": "my-launcher",
-    "description": "Describe me",
-    "displayName": "Page View Map",
-    "icon": "interface_placeholders_icon-placeholder",
-    "rootNerdletId": "page-view-map.welcome-page"
-}

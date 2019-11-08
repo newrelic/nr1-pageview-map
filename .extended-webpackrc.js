@@ -8,8 +8,12 @@ module.exports = {
             loader: 'file-loader',
             options: {},
           },
-        ],
-      },
-    ],
-  },
+          {
+            loader: 'url-loader',
+            options: { limit: 25000 },
+          }
+        ]
+      }
+    ]
+  }
 };
