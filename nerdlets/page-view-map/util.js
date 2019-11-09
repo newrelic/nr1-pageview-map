@@ -5,13 +5,11 @@ export const entityQuery = guid => {
         ... on BrowserApplicationEntity {
           settings {
             apdexTarget
-            __typename
           }
           accountId
           applicationId
           name
           servingApmApplicationId
-          __typename
         }
       }
     }
@@ -22,12 +20,6 @@ export const mapData = (accountId, appId, launcherUrlState) => {
   const query = `{
     actor {
       account(id: ${accountId}) {
-        mapBoundaries: nrql(query: "SELECT max(asnLatitude) as latMax, max(asnLongitude) as lngMax, min(asnLatitude) as latMin, min(asnLongitude) as lngMin FROM PageView WHERE appId = ${appId} ${createSinceQueryFragment(
-    launcherUrlState
-  )} ") {
-          results
-          nrql
-        }
         mapData: nrql(query: "SELECT count(*) as x, average(duration) as y, sum(asnLatitude)/count(*) as lat, sum(asnLongitude)/count(*) as lng FROM PageView FACET regionCode, countryCode WHERE appId = ${appId} ${createSinceQueryFragment(
     launcherUrlState
   )}  LIMIT 1000 ") {

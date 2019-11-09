@@ -29,7 +29,7 @@ export default class PageViewMap extends React.Component {
     this.togglePageViewDetails = this.togglePageViewDetails.bind(this);
   }
 
-  togglePageViewDetails = (facet, detailsOpen, center) => {
+  togglePageViewDetails = (facet, center) => {
     if (facet) {
       this.setState({
         detailsOpen: true,
@@ -40,8 +40,7 @@ export default class PageViewMap extends React.Component {
       //debugger;
       this.setState({
         detailsOpen: false,
-        openedFacet: null,
-        mapCenter: null,
+        openedFacet: null
       });
     }
   };
@@ -100,19 +99,7 @@ export default class PageViewMap extends React.Component {
                         }
 
                         console.debug(data);
-                        const { results } = data.actor.account.mapBoundaries;
-                        const mapData = data.actor.account.mapData.results;
-
-                        const latMax = results[0].latMax + 0.5;
-                        const lngMax = results[0].lngMax + 0.5;
-                        const latMin = results[0].latMin - 0.5;
-                        const lngMin = results[0].lngMin - 0.5;
-
-                        const deriveredCenter = [
-                          (latMax - latMin) / 2,
-                          (lngMax - lngMin) / 2,
-                        ];
-
+                        const { results } = data.actor.account.mapData;
                         return (
                           <Grid
                             spacingType={[
@@ -125,8 +112,7 @@ export default class PageViewMap extends React.Component {
                                 className="containerMap"
                                 style={{ height: '99vh' }}
                                 center={mapCenter ? mapCenter : deriveredCenter}
-                                maxBounds={[[230, 230], [-230, -230]]}
-                                bounds={[[latMax, lngMax], [latMin, lngMin]]}
+                                zoom={3}
                                 zoomControl={true}
                                 ref={ref => {
                                   this.mapRef = ref;
@@ -136,7 +122,7 @@ export default class PageViewMap extends React.Component {
                                   attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                                   url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                                 />
-                                {mapData.map((pt, i) => {
+                                {results.map((pt, i) => {
                                   const center = [pt.lat, pt.lng];
                                   return (
                                     <CircleMarker
