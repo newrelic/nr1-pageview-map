@@ -1,7 +1,7 @@
 {
   "name": "nr1-pageview-map",
   "description": "NR1 UI Package page-view-map",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "license": "Apache-2.0",
   "scripts": {
     "start": "nr1 nerdpack:serve",
@@ -16,7 +16,7 @@
     "pageviewmap"
   ],
   "nr1": {
-    "uuid": "3d88f5a2-f512-4d4d-8821-6fa77e5e204e"
+    "uuid": "67392d99-7f37-4caa-aef9-cfe1da74529a"
   },
   "bugs": {
     "email": "opensource@newrelic.com"
