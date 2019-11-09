@@ -10,11 +10,10 @@ import numeral from 'numeral';
 export default class DetailsPanel extends React.Component {
   static propTypes = {
     appId: PropTypes.number.isRequired,
-    height: PropTypes.number.isRequired,
     accountId: PropTypes.number.isRequired,
     openedFacet: PropTypes.object.isRequired,
     launcherUrlState: PropTypes.object.isRequired,
-    togglePageViewDetails: PropTypes.func.isRequired,
+    togglePageViewDetails: PropTypes.func.isRequired
   };
 
   constructor(props) {

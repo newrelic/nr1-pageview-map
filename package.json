@@ -1,7 +1,7 @@
 {
   "name": "nr1-pageview-map",
-  "description": "NR1 UI Package page-view-map",
-  "version": "0.1.0",
+  "description": "New Relic One Page View Geographic overview application",
+  "version": "0.2.0",
   "license": "Apache-2.0",
   "scripts": {
     "start": "nr1 nerdpack:serve",
@@ -16,10 +16,10 @@
     "pageviewmap"
   ],
   "nr1": {
-    "uuid": "8f909391-d8f9-48a4-9883-260e9bff6497"
+    "uuid": "67392d99-7f37-4caa-aef9-cfe1da74529a"
   },
   "bugs": {
-    "email": "opensource@newrelic.com"
+    "email": "opensource+nr1-pageview-map@newrelic.com"
   },
   "dependencies": {
     "leaflet": "^1.5.1",
@@ -35,15 +35,16 @@
     "not dead"
   ],
   "devDependencies": {
+    "@newrelic/eslint-plugin-newrelic": "^0.3.0",
     "@semantic-release/changelog": "^3.0.5",
     "@semantic-release/git": "^7.0.18",
-    "babel-eslint": "^10.0.2",
-    "eslint": "^6.1.0",
-    "eslint-config-prettier": "^6.0.0",
-    "eslint-plugin-prettier": "^3.1.0",
-    "eslint-plugin-react": "^7.14.3",
-    "file-loader": "^4.1.0",
-    "prettier": "^1.18.2",
-    "url-loader": "^2.1.0"
+    "babel-eslint": "^10.0.3",
+    "babel-runtime": "^6.26.0",
+    "eslint": "^6.6.0",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.16.0",
+    "file-loader": "^4.2.0",
+    "prettier": "^1.19.1"
   }
 }
