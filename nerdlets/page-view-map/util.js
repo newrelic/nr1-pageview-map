@@ -29,7 +29,7 @@ export const mapData = (accountId, appId, launcherUrlState) => {
       }
     }
   }`;
-  console.debug(query);
+  // console.debug(query);
   return query;
 };
 
