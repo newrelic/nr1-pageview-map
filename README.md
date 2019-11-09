@@ -4,7 +4,7 @@
 
 ## Usage
 
-nr1-pageview-map provides a geographic exploration of Browser application data based on geography.
+nr1-pageview-map provides a geographic exploration of Browser application data using the [React Leaflet](https://react-leaflet.js.org/) mapping library.
 
 ![Screenshot #1](screenshots/screenshot_01.png)
 
@@ -29,23 +29,21 @@ npm -v
 Next, clone this repository and run the following scripts:
 
 ```bash
-git clone https://github.com/newrelic/nr1-pageview-map.git
+nr1 clone -r https://github.com/newrelic/nr1-pageview-map.git
 cd nr1-pageview-map
-nr1 nerdpack:uuid -gf
-npm install
 npm start
 ```
 
-Visit https://one.newrelic.com/?nerdpacks=local, navigate to the Nerdpack, and :sparkles:
+Visit https://one.newrelic.com/?nerdpacks=local, navigate to the Nerdpack via Entity Explorer > choose a Browser application > click on Page View Map in the left hand navigation, and :sparkles:
 
 # Deploying this Nerdpack
 
 Open a command prompt in the nerdpack's directory and run the following commands.
 
 ```bash
-# this is to create a new uuid for the nerdpack so that you can deploy it to your account
+# if you ran nr1 clone, this step was already handled
 nr1 nerdpack:uuid -g [--profile=your_profile_name]
-# to see a list of APIkeys / profiles available in your development environment, run nr1 credentials:list
+# to see a list of APIkeys / profiles available in your development environment, run nr1 profiles:list
 nr1 nerdpack:publish [--profile=your_profile_name]
 nr1 nerdpack:deploy [-c [DEV|BETA|STABLE]] [--profile=your_profile_name]
 nr1 nerdpack:subscribe [-c [DEV|BETA|STABLE]] [--profile=your_profile_name]

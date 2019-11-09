@@ -11,7 +11,7 @@ import {
   NerdletStateContext,
   NerdGraphQuery,
   HeadingText,
-  BlockText,
+  BlockText
 } from 'nr1';
 import { mapData, entityQuery, getMarkerColor } from './util';
 import DetailsPanel from './details-panel';
@@ -23,25 +23,24 @@ export default class PageViewMap extends React.Component {
     this.state = {
       detailsOpen: false,
       openedFacet: null,
-      mapCenter: [10.5731, -7.5898],
+      mapCenter: [10.5731, -7.5898]
     };
 
     this.togglePageViewDetails = this.togglePageViewDetails.bind(this);
   }
 
-  togglePageViewDetails = (facet, detailsOpen, center) => {
+  togglePageViewDetails = (facet, center) => {
     if (facet) {
       this.setState({
         detailsOpen: true,
         openedFacet: facet,
-        mapCenter: center,
+        mapCenter: center
       });
     } else {
-      //debugger;
+      // debugger;
       this.setState({
         detailsOpen: false,
-        openedFacet: null,
-        mapCenter: null,
+        openedFacet: null
       });
     }
   };
@@ -61,22 +60,22 @@ export default class PageViewMap extends React.Component {
 
                   if (error) {
                     return (
-                      <React.Fragment>
+                      <>
                         <HeadingText>An error ocurred</HeadingText>
                         <p>{error.message}</p>
-                      </React.Fragment>
+                      </>
                     );
                   }
 
-                  console.debug(data);
+                  // console.debug(data);
                   const {
                     accountId,
                     servingApmApplicationId,
-                    applicationId,
+                    applicationId
                   } = data.actor.entity;
                   const { entity } = data.actor;
                   const { apdexTarget } = data.actor.entity.settings || 0.5;
-                  //return "Hello";
+                  // return "Hello";
                   return servingApmApplicationId || applicationId ? (
                     <NerdGraphQuery
                       query={mapData(
@@ -92,42 +91,29 @@ export default class PageViewMap extends React.Component {
 
                         if (error) {
                           return (
-                            <React.Fragment>
+                            <>
                               <HeadingText>An error ocurred</HeadingText>
                               <p>{error.message}</p>
-                            </React.Fragment>
+                            </>
                           );
                         }
 
-                        console.debug(data);
-                        const { results } = data.actor.account.mapBoundaries;
-                        const mapData = data.actor.account.mapData.results;
-
-                        const latMax = results[0].latMax + 0.5;
-                        const lngMax = results[0].lngMax + 0.5;
-                        const latMin = results[0].latMin - 0.5;
-                        const lngMin = results[0].lngMin - 0.5;
-
-                        const deriveredCenter = [
-                          (latMax - latMin) / 2,
-                          (lngMax - lngMin) / 2,
-                        ];
-
+                        // console.debug(data);
+                        const { results } = data.actor.account.mapData;
                         return (
                           <Grid
                             spacingType={[
                               Grid.SPACING_TYPE.NONE,
-                              Grid.SPACING_TYPE.NONE,
+                              Grid.SPACING_TYPE.NONE
                             ]}
                           >
                             <GridItem columnSpan={detailsOpen ? 8 : 12}>
                               <Map
                                 className="containerMap"
                                 style={{ height: '99vh' }}
-                                center={mapCenter ? mapCenter : deriveredCenter}
-                                maxBounds={[[230, 230], [-230, -230]]}
-                                bounds={[[latMax, lngMax], [latMin, lngMin]]}
-                                zoomControl={true}
+                                center={mapCenter}
+                                zoom={3}
+                                zoomControl
                                 ref={ref => {
                                   this.mapRef = ref;
                                 }}
@@ -136,7 +122,7 @@ export default class PageViewMap extends React.Component {
                                   attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                                   url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                                 />
-                                {mapData.map((pt, i) => {
+                                {results.map((pt, i) => {
                                   const center = [pt.lat, pt.lng];
                                   return (
                                     <CircleMarker
@@ -147,7 +133,7 @@ export default class PageViewMap extends React.Component {
                                       onClick={() => {
                                         this.togglePageViewDetails(pt, center);
                                       }}
-                                    ></CircleMarker>
+                                    />
                                   );
                                 })}
                               </Map>
