@@ -1,6 +1,6 @@
 {
   "name": "nr1-pageview-map",
-  "description": "NR1 UI Package page-view-map",
+  "description": "New Relic One Page View Geographic overview application",
   "version": "0.2.0",
   "license": "Apache-2.0",
   "scripts": {
@@ -22,8 +22,6 @@
     "email": "opensource@newrelic.com"
   },
   "dependencies": {
-    "graphql": "^14.5.8",
-    "graphql-tag": "^2.10.1",
     "leaflet": "^1.5.1",
     "numeral": "^2.0.6",
     "prop-types": "^15.6.2",

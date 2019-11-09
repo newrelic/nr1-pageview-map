@@ -40,7 +40,7 @@ export default class PageViewMap extends React.Component {
       //debugger;
       this.setState({
         detailsOpen: false,
-        openedFacet: null
+        openedFacet: null,
       });
     }
   };
