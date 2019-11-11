@@ -29,7 +29,7 @@ npm -v
 Next, clone this repository and run the following scripts:
 
 ```bash
-nr1 clone -r https://github.com/newrelic/nr1-pageview-map.git
+nr1 nerdpack:clone -r https://github.com/newrelic/nr1-pageview-map.git
 cd nr1-pageview-map
 npm start
 ```
