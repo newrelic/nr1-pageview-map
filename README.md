@@ -41,7 +41,7 @@ Visit https://one.newrelic.com/?nerdpacks=local, navigate to the Nerdpack via En
 Open a command prompt in the nerdpack's directory and run the following commands.
 
 ```bash
-# if you ran nr1 clone, this step was already handled
+# if you ran nr1 nerdpack:clone, this step was already handled
 nr1 nerdpack:uuid -g [--profile=your_profile_name]
 # to see a list of APIkeys / profiles available in your development environment, run nr1 profiles:list
 nr1 nerdpack:publish [--profile=your_profile_name]
