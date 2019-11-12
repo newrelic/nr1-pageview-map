@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/newrelic/nr1-pageview-map/compare/v1.0.0...v1.0.1) (2019-11-12)
+
+
+### Bug Fixes
+
+* **ci:** deployment shell expansion bug ([c216fe4](https://github.com/newrelic/nr1-pageview-map/commit/c216fe4db8091b410a87f21a46fca6efab105aee))
+
 # 1.0.0 (2019-11-12)
 
 
