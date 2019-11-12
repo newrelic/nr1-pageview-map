@@ -1,7 +1,7 @@
 {
   "name": "nr1-pageview-map",
   "description": "New Relic One Page View Geographic overview application",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "license": "Apache-2.0",
   "scripts": {
     "start": "nr1 nerdpack:serve",
