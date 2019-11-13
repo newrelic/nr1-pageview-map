@@ -79,11 +79,7 @@ export default class PageViewMap extends React.Component {
                   // return "Hello";
                   return appId ? (
                     <NerdGraphQuery
-                      query={mapData(
-                        accountId,
-                        appId,
-                        launcherUrlState
-                      )}
+                      query={mapData(accountId, appId, launcherUrlState)}
                     >
                       {({ loading, error, data }) => {
                         if (loading) {
