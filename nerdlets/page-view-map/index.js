@@ -73,14 +73,15 @@ export default class PageViewMap extends React.Component {
                     servingApmApplicationId,
                     applicationId
                   } = data.actor.entity;
+                  const appId = servingApmApplicationId || applicationId;
                   const { entity } = data.actor;
                   const { apdexTarget } = data.actor.entity.settings || 0.5;
                   // return "Hello";
-                  return servingApmApplicationId || applicationId ? (
+                  return appId ? (
                     <NerdGraphQuery
                       query={mapData(
                         accountId,
-                        servingApmApplicationId || applicationId,
+                        appId,
                         launcherUrlState
                       )}
                     >
@@ -141,7 +142,7 @@ export default class PageViewMap extends React.Component {
                             {openedFacet && (
                               <GridItem columnSpan={4}>
                                 <DetailsPanel
-                                  appId={servingApmApplicationId}
+                                  appId={appId}
                                   accountId={accountId}
                                   openedFacet={openedFacet}
                                   launcherUrlState={launcherUrlState}
