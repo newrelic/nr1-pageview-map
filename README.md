@@ -29,7 +29,7 @@ npm -v
 Next, clone this repository and run the following scripts:
 
 ```bash
-nr1 clone -r https://github.com/newrelic/nr1-pageview-map.git
+nr1 nerdpack:clone -r https://github.com/newrelic/nr1-pageview-map.git
 cd nr1-pageview-map
 npm start
 ```
@@ -41,7 +41,7 @@ Visit https://one.newrelic.com/?nerdpacks=local, navigate to the Nerdpack via En
 Open a command prompt in the nerdpack's directory and run the following commands.
 
 ```bash
-# if you ran nr1 clone, this step was already handled
+# if you ran nr1 nerdpack:clone, this step was already handled
 nr1 nerdpack:uuid -g [--profile=your_profile_name]
 # to see a list of APIkeys / profiles available in your development environment, run nr1 profiles:list
 nr1 nerdpack:publish [--profile=your_profile_name]
@@ -61,8 +61,7 @@ _Please do not report issues with this software to New Relic Global Technical Su
 
 New Relic hosts and moderates an online forum where customers can interact with New Relic employees as well as other customers to get help and share best practices. Like all official New Relic open source projects, there's a related Community topic in the New Relic Explorer's Hub. You can find this project's topic/threads here:
 
-https://discuss.newrelic.com/c/build-on-new-relic/nr1-pageview-map
-*(Note: URL subject to change before GA)*
+https://discuss.newrelic.com/t/new-relic-one-page-view-map-nerdpack/87602
 
 ## Issues / Enhancement Requests
 

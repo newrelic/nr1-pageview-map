@@ -60,10 +60,10 @@ export default class PageViewMap extends React.Component {
 
                   if (error) {
                     return (
-                      <>
+                      <React.Fragment>
                         <HeadingText>An error ocurred</HeadingText>
                         <p>{error.message}</p>
-                      </>
+                      </React.Fragment>
                     );
                   }
 
@@ -79,11 +79,7 @@ export default class PageViewMap extends React.Component {
                   // return "Hello";
                   return appId ? (
                     <NerdGraphQuery
-                      query={mapData(
-                        accountId,
-                        appId,
-                        launcherUrlState
-                      )}
+                      query={mapData(accountId, appId, launcherUrlState)}
                     >
                       {({ loading, error, data }) => {
                         if (loading) {
