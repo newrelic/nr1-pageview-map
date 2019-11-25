@@ -1,3 +1,11 @@
+## [1.0.2](https://github.com/newrelic/nr1-pageview-map/compare/v1.0.1...v1.0.2) (2019-11-13)
+
+
+### Bug Fixes
+
+* addressing the appId issue with the DetailPane. ([b870dc9](https://github.com/newrelic/nr1-pageview-map/commit/b870dc9c26237229ec1566e3968e7c00ef104e92))
+* eslint issues. ([a5505f7](https://github.com/newrelic/nr1-pageview-map/commit/a5505f714b38b556b419ed99271f4a0169e7d9ee))
+
 ## [1.0.1](https://github.com/newrelic/nr1-pageview-map/compare/v1.0.0...v1.0.1) (2019-11-12)
 
 
