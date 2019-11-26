@@ -60,10 +60,10 @@ export default class PageViewMap extends React.Component {
 
                   if (error) {
                     return (
-                      <React.Fragment>
+                      <>
                         <HeadingText>An error ocurred</HeadingText>
                         <p>{error.message}</p>
-                      </React.Fragment>
+                      </>
                     );
                   }
 
