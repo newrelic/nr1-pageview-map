@@ -4,7 +4,7 @@
 
 ## Usage
 
-nr1-pageview-map provides a geographic exploration of Browser application data using the [React Leaflet](https://react-leaflet.js.org/) mapping library.
+Page View Map uses [`Browser`](https://newrelic.com/products/browser-monitoring) data to plot activity on a map visualization, allowing you to do geographic exploration of your data.
 
 ![Screenshot #1](screenshots/screenshot_01.png)
 
@@ -12,10 +12,9 @@ nr1-pageview-map provides a geographic exploration of Browser application data u
 
 This project is distributed under the [Apache 2 license](LICENSE).
 
-## What do you need to make this work?
+## Dependencies
 
-1. [New Relic Browser Agent(s) installed](https://newrelic.com/products/browser-monitoring) and the related access to [New Relic One](https://newrelic.com/platform).
-2. See step 1. :grin:
+[`New Relic Browser`](https://newrelic.com/products/browser-monitoring).
 
 ## Getting started
 
@@ -34,40 +33,39 @@ cd nr1-pageview-map
 npm start
 ```
 
-Visit https://one.newrelic.com/?nerdpacks=local, navigate to the Nerdpack via Entity Explorer > choose a Browser application > click on Page View Map in the left hand navigation, and :sparkles:
+Visit [https://one.newrelic.com/?nerdpacks=local](https://one.newrelic.com/?nerdpacks=local), navigate to the Nerdpack via Entity Explorer > choose a Browser application > click on Page View Map in the left hand navigation, and :sparkles:
 
-# Deploying this Nerdpack
+## Deploying this Nerdpack
 
 Open a command prompt in the nerdpack's directory and run the following commands.
 
 ```bash
-# if you ran nr1 nerdpack:clone, this step was already handled
-nr1 nerdpack:uuid -g [--profile=your_profile_name]
-# to see a list of APIkeys / profiles available in your development environment, run nr1 profiles:list
+# To create a new uuid for the nerdpack so that you can deploy it to your account:
+# nr1 nerdpack:uuid -g [--profile=your_profile_name]
+
+# To see a list of APIkeys / profiles available in your development environment:
+# nr1 credentials:list
+
 nr1 nerdpack:publish [--profile=your_profile_name]
 nr1 nerdpack:deploy [-c [DEV|BETA|STABLE]] [--profile=your_profile_name]
 nr1 nerdpack:subscribe [-c [DEV|BETA|STABLE]] [--profile=your_profile_name]
 ```
 
-Visit https://one.newrelic.com, navigate to the Nerdpack, and :sparkles:
+Visit [https://one.newrelic.com](https://one.newrelic.com), navigate to the Nerdpack, and :sparkles:
 
-# Support
+## Community Support
 
-New Relic has open-sourced this project. This project is provided AS-IS WITHOUT WARRANTY OR SUPPORT, although you can report issues and contribute to the project here on GitHub.
+New Relic hosts and moderates an online forum where you can interact with New Relic employees as well as other customers to get help and share best practices. Like all New Relic open source community projects, there's a related topic in the New Relic Explorers Hub. You can find this project's topic/threads here:
 
-_Please do not report issues with this software to New Relic Global Technical Support._
+[https://discuss.newrelic.com/t/new-relic-one-page-view-map-nerdpack/87602](https://discuss.newrelic.com/t/new-relic-one-page-view-map-nerdpack/87602)
 
-## Community
-
-New Relic hosts and moderates an online forum where customers can interact with New Relic employees as well as other customers to get help and share best practices. Like all official New Relic open source projects, there's a related Community topic in the New Relic Explorer's Hub. You can find this project's topic/threads here:
-
-https://discuss.newrelic.com/t/new-relic-one-page-view-map-nerdpack/87602
+Please do not report issues with Page View Map to New Relic Global Technical Support. Instead, visit the [`Explorers Hub`](https://discuss.newrelic.com/c/build-on-new-relic) for troubleshooting and best-practices.
 
 ## Issues / Enhancement Requests
 
 Issues and enhancement requests can be submitted in the [Issues tab of this repository](../../issues). Please search for and review the existing open issues before submitting a new issue.
 
-# Contributing
+## Contributing
 
 Contributions are welcome (and if you submit a Enhancement Request, expect to be invited to contribute it yourself :grin:). Please review our [Contributors Guide](CONTRIBUTING.md).
 
