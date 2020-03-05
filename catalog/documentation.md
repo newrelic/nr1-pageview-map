@@ -8,11 +8,11 @@
 
 PageView Map uses [`Browser`](https://newrelic.com/products/browser-monitoring) data to plot activity on a map visualization, allowing you to do geographic exploration of your data.
 
-![Screenshot #1](catalog/screenshots/screenshot_01.png)
+![Screenshot #1](https://github.com/newrelic/nr1-pageview-map/raw/master/catalog/screenshots/screenshot_01.png)
 
 ## Open Source License
 
-This project is distributed under the [Apache 2 license](LICENSE).
+This project is distributed under the [Apache 2 license](https://github.com/newrelic/nr1-pageview-map/blob/master/LICENSE).
 
 ## Dependencies
 
@@ -65,10 +65,10 @@ Please do not report issues with PageView Map to New Relic Global Technical Supp
 
 ## Issues / Enhancement Requests
 
-Issues and enhancement requests can be submitted in the [Issues tab of this repository](../../issues). Please search for and review the existing open issues before submitting a new issue.
+Issues and enhancement requests can be submitted in the [Issues tab of this repository](https://github.com/newrelic/nr1-pageview-map/issues). Please search for and review the existing open issues before submitting a new issue.
 
 ## Contributing
 
-Contributions are welcome (and if you submit a Enhancement Request, expect to be invited to contribute it yourself :grin:). Please review our [Contributors Guide](CONTRIBUTING.md).
+Contributions are welcome (and if you submit a Enhancement Request, expect to be invited to contribute it yourself :grin:). Please review our [Contributors Guide](https://github.com/newrelic/nr1-pageview-map/blob/master/CONTRIBUTING.md).
 
 Keep in mind that when you submit your pull request, you'll need to sign the CLA via the click-through using CLA-Assistant. If you'd like to execute our corporate CLA, or if you have any questions, please drop us an email at opensource+nr1-pageview-map@newrelic.com.

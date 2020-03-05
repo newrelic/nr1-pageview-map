@@ -15,9 +15,6 @@
     "newrelic",
     "pageviewmap"
   ],
-  "nr1": {
-    "uuid": "67392d99-7f37-4caa-aef9-cfe1da74529a"
-  },
   "bugs": {
     "email": "opensource+nr1-pageview-map@newrelic.com"
   },
