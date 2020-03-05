@@ -1,12 +1,14 @@
-# Page View Map (nr1-pageview-map)
+[![New Relic One Catalog Project header](https://github.com/newrelic/open-source-office/raw/master/examples/categories/images/New_Relic_One_Catalog_Project.png)](https://github.com/newrelic/open-source-office/blob/master/examples/categories/index.md#nr1-catalog)
+
+# PageView Map (nr1-pageview-map)
 
 ![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/newrelic/nr1-pageview-map?include_prereleases&sort=semver) ![AppVeyor](https://img.shields.io/appveyor/ci/newrelic/nr1-pageview-map) [![Snyk](https://snyk.io/test/github/newrelic/nr1-pageview-map/badge.svg)](https://snyk.io/test/github/newrelic/nr1-pageview-map)[![CircleCI](https://circleci.com/gh/newrelic/nr1-pageview-map.svg?style=svg)](https://circleci.com/gh/newrelic/nr1-pageview-map)
 
 ## Usage
 
-Page View Map uses [`Browser`](https://newrelic.com/products/browser-monitoring) data to plot activity on a map visualization, allowing you to do geographic exploration of your data.
+PageView Map uses [`Browser`](https://newrelic.com/products/browser-monitoring) data to plot activity on a map visualization, allowing you to do geographic exploration of your data.
 
-![Screenshot #1](screenshots/screenshot_01.png)
+![Screenshot #1](catalog/screenshots/screenshot_01.png)
 
 ## Open Source License
 
@@ -33,7 +35,7 @@ cd nr1-pageview-map
 npm start
 ```
 
-Visit [https://one.newrelic.com/?nerdpacks=local](https://one.newrelic.com/?nerdpacks=local), navigate to the Nerdpack via Entity Explorer > choose a Browser application > click on Page View Map in the left hand navigation, and :sparkles:
+Visit [https://one.newrelic.com/?nerdpacks=local](https://one.newrelic.com/?nerdpacks=local), navigate to the Nerdpack via Entity Explorer > choose a Browser application > click on PageView Map in the left hand navigation, and :sparkles:
 
 ## Deploying this Nerdpack
 
@@ -59,7 +61,7 @@ New Relic hosts and moderates an online forum where you can interact with New Re
 
 [https://discuss.newrelic.com/t/new-relic-one-page-view-map-nerdpack/87602](https://discuss.newrelic.com/t/new-relic-one-page-view-map-nerdpack/87602)
 
-Please do not report issues with Page View Map to New Relic Global Technical Support. Instead, visit the [`Explorers Hub`](https://discuss.newrelic.com/c/build-on-new-relic) for troubleshooting and best-practices.
+Please do not report issues with PageView Map to New Relic Global Technical Support. Instead, visit the [`Explorers Hub`](https://discuss.newrelic.com/t/new-relic-one-page-view-map-nerdpack/87602) for troubleshooting and best-practices.
 
 ## Issues / Enhancement Requests
 
