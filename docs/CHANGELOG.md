@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/newrelic/nr1-pageview-map/compare/v1.0.3...v1.1.0) (2020-03-06)
+
+
+### Features
+
+* added catalog icon and configs. ([c0f4295](https://github.com/newrelic/nr1-pageview-map/commit/c0f4295b1ecb6fb67053a374076742e70faa3ad1))
+
 ## [1.0.3](https://github.com/newrelic/nr1-pageview-map/compare/v1.0.2...v1.0.3) (2019-11-26)
 
 
