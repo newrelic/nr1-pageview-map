@@ -1,5 +1,5 @@
 {
-  "tagline": "Chart PageView events across geographies",
+  "tagline": "Chart PageViews geographically",
   "repository": "https://github.com/newrelic/nr1-pageview-map.git",
   "details": "PageView Map uses Browser events to plot activity on a map visualization, allowing you to do geographic exploration of your data.",
   "support": {

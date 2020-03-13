@@ -1,6 +1,6 @@
 {
   "schemaType": "NERDPACK",
-  "id": "67392d99-7f37-4caa-aef9-cfe1da74529a",
+  "id": "51fc02d9-d39b-4aac-a782-0b7a64c18b0c",
   "displayName": "PageView Map",
   "description": "New Relic One PageView Map leverages Browser events to chart performance across geographies."
 }
