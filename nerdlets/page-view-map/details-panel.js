@@ -4,7 +4,7 @@
 import React from 'react';
 import { Stack, StackItem, LineChart, ChartGroup, Button } from 'nr1';
 import PropTypes from 'prop-types';
-import { createSinceQueryFragment } from './util';
+import { timeRangeToNrql } from '@newrelic/nr1-community';
 import numeral from 'numeral';
 
 export default class DetailsPanel extends React.Component {
@@ -61,7 +61,7 @@ export default class DetailsPanel extends React.Component {
                 openedFacet.facet[1]
                   ? ` WHERE countryCode = '${openedFacet.facet[1]}' `
                   : ''
-              } ${createSinceQueryFragment(launcherUrlState)} TIMESERIES`}
+              } ${timeRangeToNrql(launcherUrlState.timeRange)} TIMESERIES`}
             />
           </StackItem>
           <StackItem className="chart-stack-item">
@@ -77,7 +77,7 @@ export default class DetailsPanel extends React.Component {
                 openedFacet.facet[1]
                   ? ` WHERE countryCode = '${openedFacet.facet[1]}' `
                   : ''
-              } ${createSinceQueryFragment(launcherUrlState)} TIMESERIES `}
+              } ${timeRangeToNrql(launcherUrlState.timeRange)} TIMESERIES `}
             />
           </StackItem>
           <StackItem className="chart-stack-item">
@@ -93,7 +93,7 @@ export default class DetailsPanel extends React.Component {
                 openedFacet.facet[1]
                   ? ` WHERE countryCode = '${openedFacet.facet[1]}' `
                   : ''
-              } ${createSinceQueryFragment(launcherUrlState)} TIMESERIES `}
+              } ${timeRangeToNrql(launcherUrlState.timeRange)} TIMESERIES `}
             />
           </StackItem>
         </Stack>

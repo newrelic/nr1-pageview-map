@@ -19,6 +19,7 @@
     "email": "opensource+nr1-pageview-map@newrelic.com"
   },
   "dependencies": {
+    "@newrelic/nr1-community": "^1.1.1",
     "leaflet": "^1.5.1",
     "numeral": "^2.0.6",
     "prop-types": "^15.6.2",
