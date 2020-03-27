@@ -58,9 +58,7 @@ export default class PageViewMap extends React.Component {
                   }
 
                   if (error) {
-                    return (
-                      <NerdGraphError error={error} />
-                    );
+                    return <NerdGraphError error={error} />;
                   }
 
                   // console.debug(data);
@@ -83,9 +81,7 @@ export default class PageViewMap extends React.Component {
                         }
 
                         if (error) {
-                          return (
-                            <NerdGraphError error={error} />
-                          );
+                          return <NerdGraphError error={error} />;
                         }
 
                         // console.debug(data);
