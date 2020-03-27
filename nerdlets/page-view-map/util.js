@@ -1,3 +1,5 @@
+import { timeRangeToNrql } from '@newrelic/nr1-community';
+
 export const entityQuery = guid => {
   return `{
     actor {
@@ -37,21 +39,21 @@ export const createSinceQueryFragment = (
   launcherUrlState,
   compareWith = false
 ) => {
-  const { duration, begin_time, end_time } = launcherUrlState.timeRange;
-
-  if (duration) {
-    return `SINCE ${duration / 1000 / 60} minutes AGO ${
-      compareWith ? ` COMPARE with ${duration / 1000 / 60} minutes AGO` : ''
-    }`;
+  if (!launcherUrlState || !launcherUrlState.timeRange) {
+    return 'SINCE 30 minutes ago COMPATE WITH 30 minutes ago';
+  }
+  const since = timeRangeToNrql({ timeRange });
+  if (compareWith) {
+    const SECOND = 1000;
+    let delta = timeRange.duration;
+    if (timeRange.beginTime && timeRange.endTime) {
+      delta = timeRange.endTime - timeRange.beginTime;
+    } else if (timeRange.begin_time && timeRange.end_time) {
+      delta = timeRange.end_time - timeRange.begin_time;
+    }
+    return `${since} COMPARE WITH ${delta / SECOND} SECONDS ago`;
   } else {
-    const beginTimeISO = new Date(begin_time).toISOString();
-    const endTimeISO = new Date(end_time).toISOString();
-    return `SINCE '${beginTimeISO}' UNTIL '${endTimeISO}'${
-      compareWith
-        ? ` COMPARE with '${beginTimeISO * 2}' UNTIL '${endTimeISO +
-            beginTimeISO}'`
-        : ''
-    }`;
+    return since;
   }
 };
 
