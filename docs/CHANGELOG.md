@@ -1,3 +1,18 @@
+# [1.2.0](https://github.com/newrelic/nr1-pageview-map/compare/v1.1.0...v1.2.0) (2020-03-27)
+
+
+### Bug Fixes
+
+* closes newrelic/nr1-pageview-map[#28](https://github.com/newrelic/nr1-pageview-map/issues/28) ([0228212](https://github.com/newrelic/nr1-pageview-map/commit/022821217c9277f1e001bd1eb5985163257b7ae1))
+* missed a timeRange reference. ([64c67ee](https://github.com/newrelic/nr1-pageview-map/commit/64c67ee1062b112047df27cbbb94c93d0a21d448))
+* upgrade eslint and add nr1-community. ([bae0161](https://github.com/newrelic/nr1-pageview-map/commit/bae0161199202455ee193f81a68f128bdfec6eb7))
+
+
+### Features
+
+* implement EmptyState and NerdGraphError. ([da3e4d7](https://github.com/newrelic/nr1-pageview-map/commit/da3e4d7bc2e6262579691dcb6ee371700ede4e7c))
+* use nr1-community. ([095746e](https://github.com/newrelic/nr1-pageview-map/commit/095746e1f64fce54578f76021e92989222690916))
+
 # [1.1.0](https://github.com/newrelic/nr1-pageview-map/compare/v1.0.3...v1.1.0) (2020-03-06)
 
 
