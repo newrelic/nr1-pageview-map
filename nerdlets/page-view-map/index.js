@@ -9,12 +9,11 @@ import {
   GridItem,
   PlatformStateContext,
   NerdletStateContext,
-  NerdGraphQuery,
-  HeadingText,
-  BlockText
+  NerdGraphQuery
 } from 'nr1';
 import { mapData, entityQuery, getMarkerColor } from './util';
 import DetailsPanel from './details-panel';
+import { NerdGraphError, EmptyState } from '@newrelic/nr1-community';
 
 export default class PageViewMap extends React.Component {
   constructor(props) {
@@ -59,12 +58,7 @@ export default class PageViewMap extends React.Component {
                   }
 
                   if (error) {
-                    return (
-                      <>
-                        <HeadingText>An error ocurred</HeadingText>
-                        <p>{error.message}</p>
-                      </>
-                    );
+                    return <NerdGraphError error={error} />;
                   }
 
                   // console.debug(data);
@@ -87,12 +81,7 @@ export default class PageViewMap extends React.Component {
                         }
 
                         if (error) {
-                          return (
-                            <>
-                              <HeadingText>An error ocurred</HeadingText>
-                              <p>{error.message}</p>
-                            </>
-                          );
+                          return <NerdGraphError error={error} />;
                         }
 
                         // console.debug(data);
@@ -153,15 +142,11 @@ export default class PageViewMap extends React.Component {
                       }}
                     </NerdGraphQuery>
                   ) : (
-                    <div style={{ width: '50%', margin: 'auto' }}>
-                      <HeadingText>
-                        No location data is available for this app
-                      </HeadingText>
-                      <BlockText>
-                        {entity.name} does not have PageView events with an
-                        associated appId.
-                      </BlockText>
-                    </div>
+                    <EmptyState
+                      heading="No location data is available for this application"
+                      desription={`${entity.name} does not have PageView events with an
+                      associated appId or this application hasn't been granted access to that data.`}
+                    />
                   );
                 }}
               </NerdGraphQuery>
