@@ -149,7 +149,7 @@ export default class PageViewMap extends React.Component {
                     <EmptyState
                       heading="No location data is available for this application"
                       desription={`${entity.name} does not have PageView events with an
-                      associated appId.`}
+                      associated appId or this application hasn't been granted access to that data.`}
                     />
                   );
                 }}
