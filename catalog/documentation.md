@@ -1,14 +1,6 @@
-[![New Relic One Catalog Project header](https://github.com/newrelic/open-source-office/raw/master/examples/categories/images/New_Relic_One_Catalog_Project.png)](https://github.com/newrelic/open-source-office/blob/master/examples/categories/index.md#nr1-catalog)
-
-# PageView Map (nr1-pageview-map)
-
-![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/newrelic/nr1-pageview-map?include_prereleases&sort=semver) ![AppVeyor](https://img.shields.io/appveyor/ci/newrelic/nr1-pageview-map) [![Snyk](https://snyk.io/test/github/newrelic/nr1-pageview-map/badge.svg)](https://snyk.io/test/github/newrelic/nr1-pageview-map)[![CircleCI](https://circleci.com/gh/newrelic/nr1-pageview-map.svg?style=svg)](https://circleci.com/gh/newrelic/nr1-pageview-map)
-
 ## Usage
 
 PageView Map uses [`Browser`](https://newrelic.com/products/browser-monitoring) data to plot activity on a map visualization, allowing you to do geographic exploration of your data.
-
-![Screenshot #1](https://github.com/newrelic/nr1-pageview-map/raw/master/catalog/screenshots/screenshot_01.png)
 
 ## Open Source License
 
