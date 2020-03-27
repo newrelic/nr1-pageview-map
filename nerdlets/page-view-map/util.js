@@ -42,6 +42,7 @@ export const createSinceQueryFragment = (
   if (!launcherUrlState || !launcherUrlState.timeRange) {
     return 'SINCE 30 minutes ago COMPATE WITH 30 minutes ago';
   }
+  const { timeRange } = launcherUrlState;
   const since = timeRangeToNrql({ timeRange });
   if (compareWith) {
     const SECOND = 1000;
