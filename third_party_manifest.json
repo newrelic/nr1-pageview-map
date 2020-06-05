@@ -1,9 +1,21 @@
 {
-  "lastUpdated": "Sat Nov 09 2019 10:57:09 GMT-0500 (Eastern Standard Time)",
+  "lastUpdated": "Fri Jun 05 2020 22:16:50 GMT+0000 (Coordinated Universal Time)",
   "projectName": "nr1-pageview-map",
   "projectUrl": "https://github.com/newrelic/nr1-pageview-map",
   "includeDev": true,
   "dependencies": {
+    "@newrelic/nr1-community@1.1.1": {
+      "name": "@newrelic/nr1-community",
+      "version": "1.1.1",
+      "range": "^1.1.1",
+      "licenses": "Apache-2.0",
+      "repoUrl": "https://github.com/newrelic/nr1-community",
+      "versionedRepoUrl": "https://github.com/newrelic/nr1-community/tree/v1.1.1",
+      "licenseFile": "node_modules/@newrelic/nr1-community/LICENSE",
+      "licenseUrl": "https://github.com/newrelic/nr1-community/blob/v1.1.1/LICENSE",
+      "licenseTextSource": "file",
+      "publisher": "newrelic"
+    },
     "leaflet@1.5.1": {
       "name": "leaflet",
       "version": "1.5.1",
@@ -178,15 +190,15 @@
       "publisher": "Yannick Croissant",
       "email": "yannick.croissant+npm@gmail.com"
     },
-    "eslint@6.6.0": {
+    "eslint@6.8.0": {
       "name": "eslint",
-      "version": "6.6.0",
-      "range": "^6.6.0",
+      "version": "6.8.0",
+      "range": "^6.8.0",
       "licenses": "MIT",
       "repoUrl": "https://github.com/eslint/eslint",
-      "versionedRepoUrl": "https://github.com/eslint/eslint/tree/v6.6.0",
+      "versionedRepoUrl": "https://github.com/eslint/eslint/tree/v6.8.0",
       "licenseFile": "node_modules/eslint/LICENSE",
-      "licenseUrl": "https://github.com/eslint/eslint/blob/v6.6.0/LICENSE",
+      "licenseUrl": "https://github.com/eslint/eslint/blob/v6.8.0/LICENSE",
       "licenseTextSource": "file",
       "publisher": "Nicholas C. Zakas",
       "email": "nicholas+npm@nczconsulting.com"
