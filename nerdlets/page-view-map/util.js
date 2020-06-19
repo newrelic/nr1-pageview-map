@@ -1,48 +1,34 @@
 import { timeRangeToNrql } from '@newrelic/nr1-community';
 
-export const entityQuery = guid => {
-  return `{
-    actor {
-      entity(guid: "${guid}") {
-        ... on BrowserApplicationEntity {
-          settings {
-            apdexTarget
-          }
-          accountId
-          applicationId
-          name
-          servingApmApplicationId
+export const ENTITY_QUERY = `query($entityGuid: String!) {
+  actor {
+    entity(guid: $entityGuid) {
+      ... on BrowserApplicationEntity {
+        settings {
+          apdexTarget
         }
+        guid
+        accountId
+        applicationId
+        name
+        servingApmApplicationId
+      }
+      spa: nrdbQuery(nrql: "SELECT count(*) FROM BrowserInteraction") {
+        results
+        nrql
       }
     }
-  }`;
-};
-
-export const mapData = (accountId, appId, launcherUrlState) => {
-  const query = `{
-    actor {
-      account(id: ${accountId}) {
-        mapData: nrql(query: "SELECT count(*) as x, average(duration) as y, sum(asnLatitude)/count(*) as lat, sum(asnLongitude)/count(*) as lng FROM PageView FACET regionCode, countryCode WHERE appId = ${appId} ${createSinceQueryFragment(
-    launcherUrlState
-  )}  LIMIT 1000 ") {
-          results
-          nrql
-        }
-      }
-    }
-  }`;
-  // console.debug(query);
-  return query;
-};
+  }
+}`;
 
 export const createSinceQueryFragment = (
-  launcherUrlState,
+  platformUrlState,
   compareWith = false
 ) => {
-  if (!launcherUrlState || !launcherUrlState.timeRange) {
+  if (!platformUrlState || !platformUrlState.timeRange) {
     return 'SINCE 30 minutes ago COMPATE WITH 30 minutes ago';
   }
-  const { timeRange } = launcherUrlState;
+  const { timeRange } = platformUrlState;
   const since = timeRangeToNrql({ timeRange });
   if (compareWith) {
     const SECOND = 1000;

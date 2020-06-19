@@ -2,17 +2,18 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import React from 'react';
-import { Stack, StackItem, LineChart, ChartGroup, Button } from 'nr1';
+import { Stack, StackItem, HistogramChart, ChartGroup, Button } from 'nr1';
 import PropTypes from 'prop-types';
-import { createSinceQueryFragment } from './util';
 import numeral from 'numeral';
 
 export default class DetailsPanel extends React.Component {
   static propTypes = {
+    nrqlFactory: PropTypes.object.isRequired,
+    entity: PropTypes.object.isRequired,
     appId: PropTypes.number.isRequired,
     accountId: PropTypes.number.isRequired,
     openedFacet: PropTypes.object.isRequired,
-    launcherUrlState: PropTypes.object.isRequired,
+    platformUrlState: PropTypes.object.isRequired,
     togglePageViewDetails: PropTypes.func.isRequired
   };
 
@@ -21,7 +22,7 @@ export default class DetailsPanel extends React.Component {
   }
 
   render() {
-    const { accountId, appId, openedFacet, launcherUrlState } = this.props;
+    const { accountId, nrqlFactory, openedFacet } = this.props;
     const pageViewCount = openedFacet.x;
     return (
       <ChartGroup>
@@ -49,51 +50,27 @@ export default class DetailsPanel extends React.Component {
             />
           </StackItem>
           <StackItem className="chart-stack-item">
-            <h5 className="chart-header">Overall Duration</h5>
-            <LineChart
+            <h5 className="chart-header">{nrqlFactory.getQueryTitle1()}</h5>
+            <HistogramChart
               className="chartSection"
               accountId={accountId}
-              query={`SELECT average(duration) FROM PageView WHERE appId = ${appId} ${
-                openedFacet.facet[0]
-                  ? ` WHERE regionCode = '${openedFacet.facet[0]}' `
-                  : ''
-              } ${
-                openedFacet.facet[1]
-                  ? ` WHERE countryCode = '${openedFacet.facet[1]}' `
-                  : ''
-              } ${createSinceQueryFragment(launcherUrlState)} TIMESERIES`}
+              query={nrqlFactory.getQuery1(this.props)}
             />
           </StackItem>
           <StackItem className="chart-stack-item">
-            <h5 className="chart-header">Backend Duration</h5>
-            <LineChart
+            <h5 className="chart-header">{nrqlFactory.getQueryTitle2()}</h5>
+            <HistogramChart
               className="chartSection"
               accountId={accountId}
-              query={`SELECT average(backendDuration) FROM PageView WHERE appId = ${appId} ${
-                openedFacet.facet[0]
-                  ? ` WHERE regionCode = '${openedFacet.facet[0]}' `
-                  : ''
-              } ${
-                openedFacet.facet[1]
-                  ? ` WHERE countryCode = '${openedFacet.facet[1]}' `
-                  : ''
-              } ${createSinceQueryFragment(launcherUrlState)} TIMESERIES `}
+              query={nrqlFactory.getQuery2(this.props)}
             />
           </StackItem>
           <StackItem className="chart-stack-item">
-            <h5 className="chart-header">DOM Processing</h5>
-            <LineChart
+            <h5 className="chart-header">{nrqlFactory.getQueryTitle3()}</h5>
+            <HistogramChart
               className="chartSection"
               accountId={accountId}
-              query={`SELECT average(domProcessingDuration) FROM PageView WHERE appId = ${appId} ${
-                openedFacet.facet[0]
-                  ? ` WHERE regionCode = '${openedFacet.facet[0]}' `
-                  : ''
-              } ${
-                openedFacet.facet[1]
-                  ? ` WHERE countryCode = '${openedFacet.facet[1]}' `
-                  : ''
-              } ${createSinceQueryFragment(launcherUrlState)} TIMESERIES `}
+              query={nrqlFactory.getQuery3(this.props)}
             />
           </StackItem>
         </Stack>
