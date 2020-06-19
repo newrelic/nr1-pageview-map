@@ -6,9 +6,9 @@ import { createSinceQueryFragment } from '../util';
  */
 export default class NrqlFactory {
   static getFactory(data) {
-    //console.debug(data);
+    // console.debug(data);
     const hasSpa = get(data, 'actor.entity.spa.results[0].count');
-    console.debug(`hasSpa = ${hasSpa}`);
+    // console.debug(`hasSpa = ${hasSpa}`);
     if (parseInt(hasSpa) > 0) {
       return new SPAFactory();
     } else {
@@ -26,9 +26,7 @@ export default class NrqlFactory {
       throw new TypeError('NrqlFactory classes must implement getType');
     }
     if (this.getMapDataGraphQL === undefined) {
-      throw new TypeError(
-        'NrqlFactory classes must implement mapData'
-      );
+      throw new TypeError('NrqlFactory classes must implement mapData');
     }
     if (this.getQuery1 === undefined) {
       throw new TypeError('NrqlFactory classes must implement getQuery1');
@@ -65,7 +63,9 @@ class PageViewFactory extends NrqlFactory {
     const graphql = `{
       actor {
         account(id: ${accountId}) {
-          mapData: nrql(query: "SELECT count(*) as x, average(duration) as y, sum(asnLatitude)/count(*) as lat, sum(asnLongitude)/count(*) as lng FROM PageView FACET regionCode, countryCode WHERE appId = ${appId} ${createSinceQueryFragment(platformUrlState)}  LIMIT 1000 ") {
+          mapData: nrql(query: "SELECT count(*) as x, average(duration) as y, sum(asnLatitude)/count(*) as lat, sum(asnLongitude)/count(*) as lng FROM PageView FACET regionCode, countryCode WHERE appId = ${appId} ${createSinceQueryFragment(
+      platformUrlState
+    )}  LIMIT 1000 ") {
             results
             nrql
           }
@@ -77,9 +77,7 @@ class PageViewFactory extends NrqlFactory {
   }
 
   getQuery1(options) {
-    const {
-      appId, openedFacet, platformUrlState
-    } = options;
+    const { appId, openedFacet, platformUrlState } = options;
     return `SELECT histogram(duration) FROM PageView WHERE appId = ${appId} ${
       openedFacet.facet[0]
         ? ` WHERE regionCode = '${openedFacet.facet[0]}' `
@@ -96,9 +94,7 @@ class PageViewFactory extends NrqlFactory {
   }
 
   getQuery2(options) {
-    const {
-      appId, openedFacet, platformUrlState
-    } = options;
+    const { appId, openedFacet, platformUrlState } = options;
 
     return `SELECT histogram(backendDuration) FROM PageView WHERE appId = ${appId} ${
       openedFacet.facet[0]
@@ -116,9 +112,7 @@ class PageViewFactory extends NrqlFactory {
   }
 
   getQuery3(options) {
-    const {
-      appId, openedFacet, platformUrlState
-    } = options;
+    const { appId, openedFacet, platformUrlState } = options;
     return `SELECT histogram(timeToDomComplete) FROM PageView WHERE appId = ${appId} ${
       openedFacet.facet[0]
         ? ` WHERE regionCode = '${openedFacet.facet[0]}' `
@@ -149,22 +143,24 @@ class SPAFactory extends NrqlFactory {
     const graphql = `{
       actor {
         account(id: ${accountId}) {
-          mapData: nrql(query: "SELECT count(*) as x, average(duration) as y, sum(asnLatitude)/count(*) as lat, sum(asnLongitude)/count(*) as lng FROM BrowserInteraction FACET regionCode, countryCode WHERE entityGuid = '${entity.guid}' ${createSinceQueryFragment(platformUrlState)}  LIMIT 1000 ") {
+          mapData: nrql(query: "SELECT count(*) as x, average(duration) as y, sum(asnLatitude)/count(*) as lat, sum(asnLongitude)/count(*) as lng FROM BrowserInteraction FACET regionCode, countryCode WHERE entityGuid = '${
+            entity.guid
+          }' ${createSinceQueryFragment(platformUrlState)}  LIMIT 1000 ") {
             results
             nrql
           }
         }
       }
     }`;
-    console.debug(graphql);
+    // console.debug(graphql);
     return graphql;
   }
 
   getQuery1(options) {
-    const {
-      entity, openedFacet, platformUrlState
-    } = options;
-    const query = `SELECT histogram(duration) FROM BrowserInteraction WHERE entityGuid = '${entity.guid}'  ${
+    const { entity, openedFacet, platformUrlState } = options;
+    const query = `SELECT histogram(duration) FROM BrowserInteraction WHERE entityGuid = '${
+      entity.guid
+    }'  ${
       openedFacet.facet[0]
         ? ` WHERE regionCode = '${openedFacet.facet[0]}' `
         : ''
@@ -173,7 +169,7 @@ class SPAFactory extends NrqlFactory {
         ? ` WHERE countryCode = '${openedFacet.facet[1]}' `
         : ''
     } ${createSinceQueryFragment(platformUrlState)} `;
-    console.debug(query);
+    // console.debug(query);
     return query;
   }
 
@@ -182,11 +178,11 @@ class SPAFactory extends NrqlFactory {
   }
 
   getQuery2(options) {
-    const {
-      entity, openedFacet, platformUrlState
-    } = options;
+    const { entity, openedFacet, platformUrlState } = options;
 
-    const query =  `SELECT histogram(timeToDomLoading) FROM BrowserInteraction WHERE entityGuid = '${entity.guid}' ${
+    const query = `SELECT histogram(timeToDomLoading) FROM BrowserInteraction WHERE entityGuid = '${
+      entity.guid
+    }' ${
       openedFacet.facet[0]
         ? ` WHERE regionCode = '${openedFacet.facet[0]}' `
         : ''
@@ -195,7 +191,7 @@ class SPAFactory extends NrqlFactory {
         ? ` WHERE countryCode = '${openedFacet.facet[1]}' `
         : ''
     } ${createSinceQueryFragment(platformUrlState)} `;
-    console.debug(query);
+    // console.debug(query);
     return query;
   }
 
@@ -204,10 +200,10 @@ class SPAFactory extends NrqlFactory {
   }
 
   getQuery3(options) {
-    const {
-      entity, openedFacet, platformUrlState
-    } = options;
-    const query =  `SELECT histogram(timeToDomComplete) FROM BrowserInteraction WHERE entityGuid = '${entity.guid}' ${
+    const { entity, openedFacet, platformUrlState } = options;
+    const query = `SELECT histogram(timeToDomComplete) FROM BrowserInteraction WHERE entityGuid = '${
+      entity.guid
+    }' ${
       openedFacet.facet[0]
         ? ` WHERE regionCode = '${openedFacet.facet[0]}' `
         : ''
@@ -216,7 +212,7 @@ class SPAFactory extends NrqlFactory {
         ? ` WHERE countryCode = '${openedFacet.facet[1]}' `
         : ''
     } ${createSinceQueryFragment(platformUrlState)} `;
-    console.debug(query);
+    // console.debug(query);
     return query;
   }
 

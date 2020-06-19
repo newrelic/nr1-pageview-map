@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import numeral from 'numeral';
 
 export default class DetailsPanel extends React.Component {
+  /* eslint-disable react/no-unused-prop-types */
   static propTypes = {
     nrqlFactory: PropTypes.object.isRequired,
     entity: PropTypes.object.isRequired,
@@ -16,6 +17,7 @@ export default class DetailsPanel extends React.Component {
     platformUrlState: PropTypes.object.isRequired,
     togglePageViewDetails: PropTypes.func.isRequired
   };
+  /* eslint-enable */
 
   constructor(props) {
     super(props);

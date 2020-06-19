@@ -79,7 +79,12 @@ export default class PageViewMap extends React.Component {
                   // return "Hello";
                   return appId ? (
                     <NerdGraphQuery
-                      query={nrqlFactory.getMapDataGraphQL({ appId, entity, accountId, platformUrlState })}
+                      query={nrqlFactory.getMapDataGraphQL({
+                        appId,
+                        entity,
+                        accountId,
+                        platformUrlState
+                      })}
                     >
                       {({ loading, error, data }) => {
                         if (loading) {
