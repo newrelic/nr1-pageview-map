@@ -1,3 +1,17 @@
+# [1.3.0](https://github.com/newrelic/nr1-pageview-map/compare/v1.2.0...v1.3.0) (2020-06-22)
+
+
+### Bug Fixes
+
+* upgrade leaflet from 1.5.1 to 1.6.0 ([994c20c](https://github.com/newrelic/nr1-pageview-map/commit/994c20cfff3fc671462144cee853149dd593b25d))
+* upgrade leaflet from 1.5.1 to 1.6.0 ([14b06a4](https://github.com/newrelic/nr1-pageview-map/commit/14b06a4fc3d13270502ee02cf34a0d2d946132b4))
+* upgrade react-leaflet from 2.4.0 to 2.7.0 ([b9b69ae](https://github.com/newrelic/nr1-pageview-map/commit/b9b69ae1fea7542bd950b15f7d6ff4471db1de9d))
+
+
+### Features
+
+* implement SPA support. Closes [#43](https://github.com/newrelic/nr1-pageview-map/issues/43) ([#44](https://github.com/newrelic/nr1-pageview-map/issues/44)) ([afb1219](https://github.com/newrelic/nr1-pageview-map/commit/afb121934b9c75c014be90c8b7187fef36a5bb90))
+
 # [1.2.0](https://github.com/newrelic/nr1-pageview-map/compare/v1.1.0...v1.2.0) (2020-03-27)
 
 
