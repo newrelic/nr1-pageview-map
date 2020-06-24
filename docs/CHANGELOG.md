@@ -1,3 +1,16 @@
+# [1.4.0](https://github.com/newrelic/nr1-pageview-map/compare/v1.3.0...v1.4.0) (2020-06-24)
+
+
+### Bug Fixes
+
+* eslint fixes ([ce40058](https://github.com/newrelic/nr1-pageview-map/commit/ce40058d5d72907aeea36eb49e0892833adab68f))
+* updating catalog screenshot ([d5c9521](https://github.com/newrelic/nr1-pageview-map/commit/d5c952119b9bf0eef0c8d34663e67578e7739600))
+
+
+### Features
+
+* **nrqlfactory:** implement SPA support. Closes [#43](https://github.com/newrelic/nr1-pageview-map/issues/43) ([ff9fcd0](https://github.com/newrelic/nr1-pageview-map/commit/ff9fcd090f17c3d0db24083630220a0b319308f9))
+
 # [1.3.0](https://github.com/newrelic/nr1-pageview-map/compare/v1.2.0...v1.3.0) (2020-06-22)
 
 
