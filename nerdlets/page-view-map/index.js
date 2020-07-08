@@ -24,7 +24,7 @@ export default class PageViewMap extends React.Component {
       detailsOpen: false,
       openedFacet: null,
       mapCenter: [10.5731, -7.5898],
-      zoom: 3,
+      zoom: 3
     };
 
     this.togglePageViewDetails = this.togglePageViewDetails.bind(this);
@@ -46,11 +46,11 @@ export default class PageViewMap extends React.Component {
     }
   };
 
-  updateZoom = (zoom) => {
+  updateZoom = zoom => {
     this.setState({
       zoom: zoom
     });
-  }
+  };
 
   render() {
     const { detailsOpen, mapCenter, openedFacet } = this.state;
