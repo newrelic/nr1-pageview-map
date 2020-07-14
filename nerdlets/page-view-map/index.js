@@ -23,7 +23,8 @@ export default class PageViewMap extends React.Component {
     this.state = {
       detailsOpen: false,
       openedFacet: null,
-      mapCenter: [10.5731, -7.5898]
+      mapCenter: [10.5731, -7.5898],
+      zoom: 3
     };
 
     this.togglePageViewDetails = this.togglePageViewDetails.bind(this);
@@ -43,6 +44,12 @@ export default class PageViewMap extends React.Component {
         openedFacet: null
       });
     }
+  };
+
+  updateZoom = zoom => {
+    this.setState({
+      zoom: zoom
+    });
   };
 
   render() {
@@ -109,8 +116,11 @@ export default class PageViewMap extends React.Component {
                                 className="containerMap"
                                 style={{ height: '99vh' }}
                                 center={mapCenter}
-                                zoom={3}
+                                zoom={this.state.zoom}
                                 zoomControl
+                                onZoomEnd={e => {
+                                  this.updateZoom(e.target._zoom);
+                                }}
                                 ref={ref => {
                                   this.mapRef = ref;
                                 }}
