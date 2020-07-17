@@ -19,7 +19,7 @@
     "email": "opensource+nr1-pageview-map@newrelic.com"
   },
   "dependencies": {
-    "@newrelic/nr1-community": "^1.1.1",
+    "@newrelic/nr1-community": "^1.2.0",
     "leaflet": "^1.6.0",
     "lodash.get": "^4.4.2",
     "numeral": "^2.0.6",
