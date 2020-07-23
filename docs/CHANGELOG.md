@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/newrelic/nr1-pageview-map/compare/v1.4.0...v1.4.1) (2020-07-23)
+
+
+### Bug Fixes
+
+* upgrade @newrelic/nr1-community from 1.1.1 to 1.2.0 ([68df864](https://github.com/newrelic/nr1-pageview-map/commit/68df86437bf4334bd8655a2b21d1b4d866c4efef))
+
 # [1.4.0](https://github.com/newrelic/nr1-pageview-map/compare/v1.3.0...v1.4.0) (2020-06-24)
 
 
