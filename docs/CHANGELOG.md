@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/newrelic/nr1-pageview-map/compare/v1.4.1...v1.4.2) (2020-09-02)
+
+
+### Bug Fixes
+
+* update master to main ([6584820](https://github.com/newrelic/nr1-pageview-map/commit/6584820471e473235811f927ace47c1f92b72913))
+
 ## [1.4.1](https://github.com/newrelic/nr1-pageview-map/compare/v1.4.0...v1.4.1) (2020-07-23)
 
 
