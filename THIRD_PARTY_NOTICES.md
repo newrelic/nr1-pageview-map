@@ -396,7 +396,7 @@ SOFTWARE.
 
 ### react-dom
 
-This product includes source derived from [react-dom](https://github.com/facebook/react) ([v16.8.6](https://github.com/facebook/react/tree/v16.8.6)), distributed under the [MIT License](https://github.com/facebook/react/blob/v16.8.6/LICENSE):
+This product includes source derived from [react-dom](https://github.com/facebook/react) ([v16.6.3](https://github.com/facebook/react/tree/v16.6.3)), distributed under the [MIT License](https://github.com/facebook/react/blob/v16.6.3/LICENSE):
 
 ```
 MIT License
@@ -454,7 +454,7 @@ SOFTWARE.
 
 ### react
 
-This product includes source derived from [react](https://github.com/facebook/react) ([v16.8.6](https://github.com/facebook/react/tree/v16.8.6)), distributed under the [MIT License](https://github.com/facebook/react/blob/v16.8.6/LICENSE):
+This product includes source derived from [react](https://github.com/facebook/react) ([v16.6.3](https://github.com/facebook/react/tree/v16.6.3)), distributed under the [MIT License](https://github.com/facebook/react/blob/v16.6.3/LICENSE):
 
 ```
 MIT License
@@ -486,7 +486,7 @@ SOFTWARE.
 
 ### @newrelic/eslint-plugin-newrelic
 
-This product includes source derived from [@newrelic/eslint-plugin-newrelic](https://github.com/NewRelic/eslint-plugin-newrelic) ([v0.3.0](https://github.com/NewRelic/eslint-plugin-newrelic/tree/v0.3.0)), distributed under the [Apache-2.0 License](https://github.com/NewRelic/eslint-plugin-newrelic/blob/v0.3.0/LICENSE):
+This product includes source derived from [@newrelic/eslint-plugin-newrelic](https://github.com/NewRelic/eslint-plugin-newrelic) ([v0.3.1](https://github.com/NewRelic/eslint-plugin-newrelic/tree/v0.3.1)), distributed under the [Apache-2.0 License](https://github.com/NewRelic/eslint-plugin-newrelic/blob/v0.3.1/LICENSE):
 
 ```
                                  Apache License
@@ -695,7 +695,7 @@ This product includes source derived from [@newrelic/eslint-plugin-newrelic](htt
 
 ### @semantic-release/changelog
 
-This product includes source derived from [@semantic-release/changelog](https://github.com/semantic-release/changelog) ([v3.0.5](https://github.com/semantic-release/changelog/tree/v3.0.5)), distributed under the [MIT License](https://github.com/semantic-release/changelog/blob/v3.0.5/LICENSE):
+This product includes source derived from [@semantic-release/changelog](https://github.com/semantic-release/changelog) ([v5.0.1](https://github.com/semantic-release/changelog/tree/v5.0.1)), distributed under the [MIT License](https://github.com/semantic-release/changelog/blob/v5.0.1/LICENSE):
 
 ```
 MIT License
@@ -724,7 +724,7 @@ SOFTWARE.
 
 ### @semantic-release/git
 
-This product includes source derived from [@semantic-release/git](https://github.com/semantic-release/git) ([v7.0.18](https://github.com/semantic-release/git/tree/v7.0.18)), distributed under the [MIT License](https://github.com/semantic-release/git/blob/v7.0.18/LICENSE):
+This product includes source derived from [@semantic-release/git](https://github.com/semantic-release/git) ([v9.0.0](https://github.com/semantic-release/git/tree/v9.0.0)), distributed under the [MIT License](https://github.com/semantic-release/git/blob/v9.0.0/LICENSE):
 
 ```
 MIT License
@@ -753,7 +753,7 @@ SOFTWARE.
 
 ### babel-eslint
 
-This product includes source derived from [babel-eslint](https://github.com/babel/babel-eslint) ([v10.0.3](https://github.com/babel/babel-eslint/tree/v10.0.3)), distributed under the [MIT License](https://github.com/babel/babel-eslint/blob/v10.0.3/LICENSE):
+This product includes source derived from [babel-eslint](https://github.com/babel/babel-eslint) ([v10.1.0](https://github.com/babel/babel-eslint/tree/v10.1.0)), distributed under the [MIT License](https://github.com/babel/babel-eslint/blob/v10.1.0/LICENSE):
 
 ```
 Copyright (c) 2014-2016 Sebastian McKenzie <sebmck@gmail.com>
@@ -797,7 +797,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ### eslint-config-prettier
 
-This product includes source derived from [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier) ([v6.5.0](https://github.com/prettier/eslint-config-prettier/tree/v6.5.0)), distributed under the [MIT License](https://github.com/prettier/eslint-config-prettier/blob/v6.5.0/LICENSE):
+This product includes source derived from [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier) ([v6.11.0](https://github.com/prettier/eslint-config-prettier/tree/v6.11.0)), distributed under the [MIT License](https://github.com/prettier/eslint-config-prettier/blob/v6.11.0/LICENSE):
 
 ```
 The MIT License (MIT)
@@ -826,7 +826,7 @@ THE SOFTWARE.
 
 ### eslint-plugin-prettier
 
-This product includes source derived from [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier) ([v3.1.1](https://github.com/prettier/eslint-plugin-prettier/tree/v3.1.1)), distributed under the [MIT License](https://github.com/prettier/eslint-plugin-prettier/blob/v3.1.1/LICENSE.md):
+This product includes source derived from [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier) ([v3.1.4](https://github.com/prettier/eslint-plugin-prettier/tree/v3.1.4)), distributed under the [MIT License](https://github.com/prettier/eslint-plugin-prettier/blob/v3.1.4/LICENSE.md):
 
 ```
 # The MIT License (MIT)
@@ -858,7 +858,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 ### eslint-plugin-react
 
-This product includes source derived from [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) ([v7.16.0](https://github.com/yannickcr/eslint-plugin-react/tree/v7.16.0)), distributed under the [MIT License](https://github.com/yannickcr/eslint-plugin-react/blob/v7.16.0/LICENSE):
+This product includes source derived from [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react) ([v7.20.6](https://github.com/yannickcr/eslint-plugin-react/tree/v7.20.6)), distributed under the [MIT License](https://github.com/yannickcr/eslint-plugin-react/blob/v7.20.6/LICENSE):
 
 ```
 The MIT License (MIT)
@@ -915,7 +915,7 @@ THE SOFTWARE.
 
 ### file-loader
 
-This product includes source derived from [file-loader](https://github.com/webpack-contrib/file-loader) ([v4.2.0](https://github.com/webpack-contrib/file-loader/tree/v4.2.0)), distributed under the [MIT License](https://github.com/webpack-contrib/file-loader/blob/v4.2.0/LICENSE):
+This product includes source derived from [file-loader](https://github.com/webpack-contrib/file-loader) ([v4.3.0](https://github.com/webpack-contrib/file-loader/tree/v4.3.0)), distributed under the [MIT License](https://github.com/webpack-contrib/file-loader/blob/v4.3.0/LICENSE):
 
 ```
 Copyright JS Foundation and other contributors
