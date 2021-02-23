@@ -24,7 +24,7 @@
     "lodash.get": "^4.4.2",
     "numeral": "^2.0.6",
     "prop-types": "^15.6.2",
-    "react-leaflet": "^2.7.0"
+    "react-leaflet": "^2.8.0"
   },
   "browserslist": [
     "last 2 versions",
