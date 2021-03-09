@@ -1,3 +1,10 @@
+## [1.4.4](https://github.com/newrelic/nr1-pageview-map/compare/v1.4.3...v1.4.4) (2021-03-09)
+
+
+### Bug Fixes
+
+* upgrade leaflet from 1.6.0 to 1.7.1 ([81a856d](https://github.com/newrelic/nr1-pageview-map/commit/81a856dd596865b1433380e0bffc41a595d22a9c))
+
 ## [1.4.3](https://github.com/newrelic/nr1-pageview-map/compare/v1.4.2...v1.4.3) (2021-03-02)
 
 
