@@ -1,3 +1,10 @@
+## [1.4.5](https://github.com/newrelic/nr1-pageview-map/compare/v1.4.4...v1.4.5) (2021-03-11)
+
+
+### Bug Fixes
+
+* upgrade react-leaflet from 2.7.0 to 2.8.0 ([83f54d0](https://github.com/newrelic/nr1-pageview-map/commit/83f54d00b9771564010120734532691f54d9a220))
+
 ## [1.4.4](https://github.com/newrelic/nr1-pageview-map/compare/v1.4.3...v1.4.4) (2021-03-09)
 
 
