@@ -1,3 +1,10 @@
+## [1.4.6](https://github.com/newrelic/nr1-pageview-map/compare/v1.4.5...v1.4.6) (2021-03-23)
+
+
+### Bug Fixes
+
+* removed code of conduct file ([14f35b9](https://github.com/newrelic/nr1-pageview-map/commit/14f35b9a0d820b1ed6034ed54090b6c0fffcd903))
+
 ## [1.4.5](https://github.com/newrelic/nr1-pageview-map/compare/v1.4.4...v1.4.5) (2021-03-11)
 
 
