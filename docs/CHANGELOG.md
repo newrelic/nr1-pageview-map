@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/newrelic/nr1-pageview-map/compare/v1.4.6...v1.5.0) (2021-10-04)
+
+
+### Features
+
+* update semantic release with node ([3fd67df](https://github.com/newrelic/nr1-pageview-map/commit/3fd67df17f4cc345af0058e8e2f26c5211766197))
+
 ## [1.4.6](https://github.com/newrelic/nr1-pageview-map/compare/v1.4.5...v1.4.6) (2021-03-23)
 
 
