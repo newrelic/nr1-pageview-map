@@ -3,6 +3,12 @@
     "id": "page-view-map",
     "description": "Page View Map",
     "displayName": "Page View Map",
-    "entities": [{"domain": "BROWSER", "type": "APPLICATION"}],
-    "actionCategory": "monitor"
+    "context": {
+        "entities": [
+            {
+                "domain": "BROWSER",
+                "type": "APPLICATION"
+            }
+        ]
+    }
 }
