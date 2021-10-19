@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/newrelic/nr1-pageview-map/compare/v1.5.0...v1.5.1) (2021-10-19)
+
+
+### Bug Fixes
+
+* deprecated platform parameters ([9168f0c](https://github.com/newrelic/nr1-pageview-map/commit/9168f0cb1632a0abba246c76464dbf99897c7058))
+
 # [1.5.0](https://github.com/newrelic/nr1-pageview-map/compare/v1.4.6...v1.5.0) (2021-10-04)
 
 
