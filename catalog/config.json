@@ -2,6 +2,8 @@
   "tagline": "Chart PageViews geographically",
   "repository": "https://github.com/newrelic/nr1-pageview-map.git",
   "details": "PageView Map uses Browser events to plot activity on a map visualization, allowing you to do geographic exploration of your data.",
+  "categoryTerms": ["browser agent"],
+  "keywords": ["browser", "visualizations"],
   "support": {
     "issues": {
       "url": "https://github.com/newrelic/nr1-pageview-map/issues"
