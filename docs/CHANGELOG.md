@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/newrelic/nr1-pageview-map/compare/v1.5.1...v1.6.0) (2021-11-05)
+
+
+### Features
+
+* add catalog keywords and categoryTerms ([029fe68](https://github.com/newrelic/nr1-pageview-map/commit/029fe6870d52a12e37914c196bd07eed63b2fc4d))
+
 ## [1.5.1](https://github.com/newrelic/nr1-pageview-map/compare/v1.5.0...v1.5.1) (2021-10-19)
 
 
