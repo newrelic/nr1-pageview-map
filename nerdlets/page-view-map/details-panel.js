@@ -55,7 +55,7 @@ export default class DetailsPanel extends React.Component {
             <h5 className="chart-header">{nrqlFactory.getQueryTitle1()}</h5>
             <HistogramChart
               className="chartSection"
-              accountId={accountId}
+              accountIds={[accountId]}
               query={nrqlFactory.getQuery1(this.props)}
             />
           </StackItem>
@@ -63,7 +63,7 @@ export default class DetailsPanel extends React.Component {
             <h5 className="chart-header">{nrqlFactory.getQueryTitle2()}</h5>
             <HistogramChart
               className="chartSection"
-              accountId={accountId}
+              accountIds={[accountId]}
               query={nrqlFactory.getQuery2(this.props)}
             />
           </StackItem>
@@ -71,7 +71,7 @@ export default class DetailsPanel extends React.Component {
             <h5 className="chart-header">{nrqlFactory.getQueryTitle3()}</h5>
             <HistogramChart
               className="chartSection"
-              accountId={accountId}
+              accountIds={[accountId]}
               query={nrqlFactory.getQuery3(this.props)}
             />
           </StackItem>
