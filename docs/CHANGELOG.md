@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/newrelic/nr1-pageview-map/compare/v1.6.0...v1.7.0) (2022-02-22)
+
+
+### Features
+
+* updating node versions ([41a64e7](https://github.com/newrelic/nr1-pageview-map/commit/41a64e71fc84a5e3b4cf6cd10b966e77e0e747d8))
+
 # [1.6.0](https://github.com/newrelic/nr1-pageview-map/compare/v1.5.1...v1.6.0) (2021-11-05)
 
 
