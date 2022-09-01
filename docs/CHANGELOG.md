@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/newrelic/nr1-pageview-map/compare/v1.7.0...v1.7.1) (2022-09-01)
+
+
+### Bug Fixes
+
+* Remove browser applications context ([dae4484](https://github.com/newrelic/nr1-pageview-map/commit/dae4484e0fa8d8981f85ae829b9d6ce6b3b119f5))
+
 # [1.7.0](https://github.com/newrelic/nr1-pageview-map/compare/v1.6.0...v1.7.0) (2022-02-22)
 
 
