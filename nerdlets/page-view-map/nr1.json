@@ -2,13 +2,5 @@
     "schemaType": "NERDLET",
     "id": "page-view-map",
     "description": "Page View Map",
-    "displayName": "Page View Map",
-    "context": {
-        "entities": [
-            {
-                "domain": "BROWSER",
-                "type": "APPLICATION"
-            }
-        ]
-    }
+    "displayName": "Page View Map"
 }
